@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  
+   <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+
+    }
+
+   
+    
+
+    
+
+    .logo {
+        text-decoration: none;
+        color: #3a6cf4;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 30px;
+    }
+
+    .navigation a {
+        color: #3a6cf4;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 500;
+        margin-right: 50px;
+    }
+
+    .navigation a:hover {
+        color: #10b818;
+        font-size: 22px;
+    }
+
+    section {
+        padding: 50px 100px;
+    }
+
+    .main {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: url(/templates/admins/cover1.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .main h2 {
+        padding: 15px;
+        margin-top: 10px;
+        padding-left: 10px;
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, .5);
+        border-radius: 15px;
+        font-size: 70px;
+        font-weight: 600;
+        /* text-align: center; */
+    }
+
+    .main h3 {
+        color: #ff7b00;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding-left: 15px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        background-color: rgba(0, 0, 0, .9);
+    }
+
+    input[type=submit]:hover {
+        background-color: #1f06ff;
+    }
+
+    input[type="submit"] {
+        background-color: #18a00c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: cursive;
+        font-size: large;
+
+    }
+
+    input[type="text"] {
+        display: block;
+        width: 50%;
+        padding: 8px;
+        margin-left: 150px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+
+    input[type="text"]:hover {
+
+        border: 4px solid rgb(25, 241, 6);
+        border-radius: 15px;
+    }
+    input[type="password"] {
+        display: block;
+        width: 50%;
+        padding: 8px;
+        margin-left: 150px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+
+    input[type="password"]:hover {
+
+        border: 4px solid rgb(25, 241, 6);
+        border-radius: 15px;
+    }
+
+    .DepartmentForm {
+        width: 65%;
+        height: 25%;
+        margin-bottom: 300px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        margin-left: 15%;
+        background-color: rgba(0, 0, 0, .5);
+        text-align: center;
+
+    }
+
+    .titleForm {
+        margin-bottom: 30px;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        font-size: 40px;
+        /* padding: 50px; */
+        font-family: cursive;
+        color: white;
+    }
+
+    .Department {
+        /* margin-top: 50px; */
+        background: url(/templates/admins/cover3.jpeg) no-repeat;
+        background-size: outo;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    
+
+    .UND {
+        display: block;
+        width: 50%;
+        padding: 8px;
+        margin-left: 150px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+
+    .UND:hover {
+
+        border: 4px solid rgb(25, 241, 6);
+        border-radius: 15px;
+    }
+
+
+
+
+    .accountDocForm {
+        width: 65%;
+        height: 25%;
+        margin-bottom: 300px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        margin-left: 15%;
+        background-color: rgba(0, 0, 0, .5);
+        text-align: center;
+
+    }
+
+    .titleCreateAccouuntD {
+
+        margin-bottom: 30px;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        font-size: 40px;
+        /* padding: 50px; */
+        font-family: cursive;
+        color: white;
+    }
+
+    
+
+
+
+    
+
+    .UNS {
+        display: block;
+        width: 50%;
+        padding: 8px;
+        margin-left: 150px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+
+    .UNS:hover {
+
+        border: 4px solid rgb(25, 241, 6);
+        border-radius: 15px;
+    }
+
+
+
+
+    .accountStuForm {
+        width: 65%;
+        height: 25%;
+        margin-bottom: 300px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        margin-left: 15%;
+        background-color: rgba(0, 0, 0, .5);
+        text-align: center;
+
+    }
+
+    .titleCreateAccouuntS {
+
+        margin-bottom: 30px;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        font-size: 40px;
+        /* padding: 50px; */
+        font-family: cursive;
+        color: white;
+    }
+
+    .accountStuSection {
+
+        /* margin-top: 50px; */
+        background: url(/templates/admins/cover7.jpeg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    
+
+
+
+
+
+
+    .subjectName {
+        display: block;
+        width: 50%;
+        padding: 100px;
+        margin-left: 150px;
+        margin-bottom: 150px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+
+    .subjectName:hover {
+
+        border: 4px solid rgb(25, 241, 6);
+        border-radius: 15px;
+    }
+
+    .subjectCode {
+        display: block;
+        width: 50%;
+        padding: 8px;
+        margin-left: 150px;
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+
+    .subjectCode:hover {
+
+        border: 4px solid rgb(25, 241, 6);
+        border-radius: 15px;
+    }
+
+
+    select {
+        display: block;
+        padding: 8px;
+        margin-left: 150px;
+        font-size: 17px;
+        font-family: cursive;
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        width: 53%;
+        background-color: #fff;
+        color: #333;
+    }
+
+    select:hover {
+        border: 4px solid rgb(25, 241, 6);
+        border-radius: 15px;
+    }
+
+
+    .AddSabjectForm {
+        width: 65%;
+        height: 25%;
+        margin-bottom: 300px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+        margin-left: 15%;
+        background-color: rgba(172, 134, 134, 0.5);
+        text-align: center;
+
+    }
+
+    .titleAddSubject {
+
+        margin-bottom: 30px;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        font-size: 40px;
+        /* padding: 50px; */
+        font-family: cursive;
+        color: white;
+    }
+
+    .AddSubjectSection {
+
+        /* margin-top: 50px; */
+        background: url(/templates/admins/cover8.jpeg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    body {
+   
+    background: url("abc.jpg");
+    
+
+    }
+ body{
+    background-color: hsl(225, 2%, 67%);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {background-color: #04AA6D;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{#each governorates}}
+    <section  id="select student passed subjects">
+    <form class="AddSabjectForm" action="/Home" method="get">
+    <br>
+    <div>
+ 
+        <h4 class="titleCreateAccouuntD" style="color: blue;font-size: 60px;">{{name}}</h4>
+        
+        <div class="col-md-3" style="width: fit-content height:fit-content-content;">
+            <img src="/images/{{image}}" alt="">
+
+        </div>
+        <br>
+        
+        <label style="color: rgb(0, 0, 0))0, 183, 255); font-size: xx-large;" >{{description}}</label><br><br><br>
+       
+        
+        <button class="button button1" >Information</button><br>
+</div>
+      </form>
+     </section>
+
+
+{{/each}}
+</body>
+</html>
+    
