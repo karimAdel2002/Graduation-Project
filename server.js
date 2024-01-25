@@ -12,7 +12,6 @@ mongoose.connect(process.env.mongooconectionurl)
 const app = express();
 app.use(cookieParser())
 
-
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'))
 app.engine('handlebars', engine());
@@ -24,8 +23,6 @@ app.use(express.static("Upload"));
 
 app.use('/sign_in',login_route);
 app.use('/Home',authentication,home_route);
-
-
 
 app.listen(process.env.port, () => {
     
