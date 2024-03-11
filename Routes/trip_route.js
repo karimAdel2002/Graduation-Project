@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import {  index  } from '../Controller/home.js';
+import {  go_trip_page} from '../Controller/trip.js';
 
 
 const router = new Router();
 
-
-router.get('/', index);
-
+router.get('/:name', go_trip_page);
 
 
 export default router;

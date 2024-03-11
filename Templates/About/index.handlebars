@@ -4,21 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>home</title>
+    <title>about us</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/kisspng-egyptian-pyramids-computer-icons-egyptian-money-5adf8f90eab4a0.2796726215246007209614.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link href="/vendor/aos/aos.css" rel="stylesheet">
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/css/magnific-popup.css">
@@ -42,7 +36,7 @@
         <![endif]-->
 
      <!-- header-start -->
-     <header>
+  <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
                 <div class="container-fluid">
@@ -136,407 +130,117 @@
         </div>
     </header>
     <!-- header-end -->
-
-    <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Giza</h3>
-                                <p>Giza is considered one of the largest tourist trips in Egypt, as it is rich in ancient Egyptian antiquities</p>
-                                <a href="/Governorates/Giza" class="boxed-btn3">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Alexandria</h3>
-                                <p>Alexandria is the mermaid of the sea.
-                                    Once you reach it, sleep flies from your eyes,
-                                  and you wish not to waste a moment without enjoying the beauty of Alexandria.</p>
-                                <a href="/Governorates/Alexandria" class="boxed-btn3">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_3 overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Sharm El Sheikh </h3>
-                                <p>is a tourist city, located at the confluence of the Gulfs of Aqaba and Suez on the Red Sea coast.</p>
-                                <a href="/Governorates/Sharm El Sheikh" class="boxed-btn3">Explore Now</a>
-                            </div>
-                        </div>
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>About Us</h3>
+                       
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <!-- slider_area_end -->
+    <!--/ bradcam_area  -->
     
-    <!-- popular_destination_area_start  -->
-    <div class="popular_destination_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3> Governates</h3>
-                        <p>Popular Tourist Governates In Egypt</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {{#each popular_governorate}}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="/img/Governorates/{{image}}" alt="">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center" >{{name}} <a href="/Governorates/{{name}}"> {{places_number}} Places</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-    <!-- popular_destination_area_end  -->
-    <!-- popular_destination_area_start  -->
-    <div class="popular_destination_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Other Governates</h3>
-                  
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {{#each non_popular_governorate}}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="/img/Governorates/{{image}}" alt="">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">{{name}} <a href="/Governorates/{{name}}"> {{places_number}} Places</a> </p>
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
-                
-            </div>
-        </div>
-    </div>
-    <!-- popular_destination_area_end  -->
-
-    <!-- newletter_area_start  -->
-    <div class="newletter_area overlay">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="newsletter_text">
-                                <h4>Subscribe Our Newsletter</h4>
-                                <p>Subscribe newsletter to get offers and about
-                                    new places to discover.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="mail_form">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-9 col-md-8">
-                                        <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit" >Subscribe</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- newletter_area_end  -->
-    <!-- video_start -->
-
-    <div class="popular_places_area">
-    <div class="video_area video_bg overlay">
+    <div class="about_story">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="video_wrap text-center">
-                        <h3>Enjoy Video</h3>
-                        <div class="video_icon">
-                            <a class="popup-video video_play_button" href="video/Eygipt.mp4">
-                                <i class="fa fa-play"></i>
-                            </a>
+                    <div class="story_heading">
+                        <h3>Our Story</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-11 offset-lg-1">
+                            <div class="story_info">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <p>Business owners need to create a tourism company website to achieve the following goals:
+
+                                            Attract new customers
+                                            An attractive website helps attract customers' attention and keep them on your site for a longer period of time, thus learning about the tourism programs and services provided by the company.
+                                            
+                                            Book tourism programs
+                                            The website includes a section dedicated to tourist trips that contains all the trip details. Customers can browse this section, view the programs and book them.Introducing new offers
+                                            The company can add new offers on tourist trips in its own sections on the website, and it can also be sent automatically to customers who subscribe to the website’s email service.
+                                            
+                                            Providing continuous customer service
+                                            Through the website, customers can communicate with you throughout the day and you can provide assistance to them, unlike traditional methods of customer service such as visiting the company headquarters or the tourism office..</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="story_thumb">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="thumb padd_1">
+                                            <img src="/img/about/1.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="thumb">
+                                            <img src="/img/about/2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="counter_wrap">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="single_counter text-center">
+                                            <h3  class="counter">378</h3>
+                                            <p>Tour has done successfully</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="single_counter text-center">
+                                            <h3 class="counter">30</h3>
+                                            <p>Yearly tour arrange</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="single_counter text-center">
+                                            <h3 class="counter">2263</h3>
+                                            <p>Happy Clients</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- video_end -->
-    <!--trip_start -->
 
-    <div class="popular_places_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>available Trip</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {{#each trips}}
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/trip/{{image}}" alt="">
-                            <a href="#" class="prise">{{price}}</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="/Trip/{{name}}"><h3>{{name}}</h3></a>
-                            <p>{{description}}</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i>
-                                     <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days" >
-                                    <a href="/Trip/{{name}}"><button class="boxed-btn4 " type="submit"  >view tour</button> </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
+    
 
 
-    <!-- trip_end  -->
- 
-    <!-- Read Before You Go_start -->
-    <div class="popular_places_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Read Before You Go </h3>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/1.png" alt="">
-                            
-                        </div>
-                        <div class="place_info">
-                            <a href="/Food"><h3>The Top 25 Types of Egyptian Food</h3></a>
-                            <p>21 March,2024</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                
-                                <div class="days">
-                                    <a href="/Food">   <button class="boxed-btn4 " type="submit" >Read More</button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/5.jpg" alt="">
-                            
-                        </div>
-                        <div class="place_info">
-                            <a href="/Weather"><h3> Everything About the Weather in Egypt 2024   </h3></a>
-                            <p>Are You Looking To Know the Weather in Egypt </p>
-
-                            <div class="rating_days d-flex justify-content-between">
-                                
-                                <div class="days">
-                                   <a href="/Weather"> <button class="boxed-btn4 " type="submit" >Read More</button></a> 
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/2.png" alt="">
-                           
-                        </div>
-                        <div class="place_info">
-                            <a href="/Embassies"><h3>List Foreign Embassies and Consulates in Egypt</h3></a>
-                            <p>22March,2024</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                
-                                <div class="days">
-                                   <a href="/Embassies"> <button class="boxed-btn4 " type="submit" >Read More</button></a> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/6 (2).png" alt="">
-                           
-                        </div>
-                        <div class="place_info">
-                            <a href="/Music"><h3>The most famous songs in Egypt in 2024</h3></a>
-                            <p>22March,2024</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                
-                                <div class="days">
-                                  <a href="/Music">  <button class="boxed-btn4 " type="submit" >Read More</button></a> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/7.jpg" alt="">
-                           
-                        </div>
-                        <div class="place_info">
-                            <a href="/Language"><h3>Translation of some famous Egyptian words</h3></a>
-                            <p>22March,2024</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                
-                                <div class="days">
-                                   <a href="/Language"> <button class="boxed-btn4 " type="submit" >Read More</button></a> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/8.png" alt="">
-                           
-                        </div>
-                        <div class="place_info">
-                            <a href="/Astro_Tourism"><h3>Places for astronomy tourism in Egypt</h3></a>
-                            <p>22March,2024</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                
-                                <div class="days">
-                                  <a href="/Astro_Tourism">  <button class="boxed-btn4 " type="submit" >Read More</button></a> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/3.png" alt="">
-                            
-                        </div>
-                        <div class="place_info">
-                            <a href="/Travel_Tips"><h3>Egypt Travel Tips 2024</h3></a>
-                    
-                            <p>25 March ,2024</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                
-                                <div class="days">
-                                   <a href="/Travel_Tips"> <button class="boxed-btn4 " type="submit" >Read More</button></a> 
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="/img/BeforeGo/4.png" alt="">
-                            
-                        </div>
-                        <div class="place_info">
-                            <a href="/Travel_Visa"><h3>Egypt Travel Visa</h3></a>
-                            <p>Are Y ou need to know about Egypt Travel Visa </p>
-                            <div class="rating_days d-flex justify-content-between">
-                               
-                                <div class="days">
-                                  <a href="/Travel_Visa">  <button class="boxed-btn4 " type="submit" >Read More</button></a> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-               
-     <!-- Read Before You Go_end  -->
+    
 
 
+    <!-- testimonial_area  -->
+    <div class="section_title text-center mb_70">
+        <h3>Team Members</h3>
+    </div>
     <div class="testimonial_area">
-        
+
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>  Tour-Guieds</h3>
-                        <p>Popular Tourguides With Highly Rates</p>
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-xl-12">
                     <div class="testmonial_active owl-carousel">
                         <div class="single_carousel">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
-                                  
                                     <div class="single_testmonial text-center">
                                         <div class="author_thumb">
-                                            <img src="/img/testmonial/comment_1.png" alt="">
+                                            <img src="/img/testmonial/comment_1.png">
                                         </div>
-                                        <p>"one of the popular tourguides in Alexandria Governate.</p>
+                                        <p>"team leader"</p>
                                         <div class="testmonial_author">
-                                            <h3>-Mohamed</h3>
+                                            <h3>-karim</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -549,9 +253,9 @@
                                         <div class="author_thumb">
                                             <img src="/img/testmonial/comment_2.png" alt="">
                                         </div>
-                                        <p>"one of the popular tourguides in Giza Governate.</p>
+                                        <p>"team leader"</p>
                                         <div class="testmonial_author">
-                                            <h3>- Ali</h3>
+                                            <h3>- mohamed</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -564,29 +268,60 @@
                                         <div class="author_thumb">
                                             <img src="/img/testmonial/comment_3.png" alt="">
                                         </div>
-                                        <p>"one of the popular tourguides in Aswan Governate.</p>
+                                        <p>"team leader"</p>
                                         <div class="testmonial_author">
-                                            <h3>- Ahmed</h3>
-                                          </div>
-                                      </div>
-                                  </div>
-                               </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                                            <h3>-Ali</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-     </div>
-   </div>
-  </div>
-</div>
-
-
-
+    </div>
     <!-- /testimonial_area  -->
-    
-   
+
+
+    <div class="recent_trip_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Project Supervisor</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_trip">
+                        <div class="thumb">
+                            <img src="/img/testmonial/4.jpg" alt="">
+                        </div>
+                        <div class="info">
+                            
+                            <a href="#">
+                                <h3>DR. Amgad Monir</h3>
+                                <h3>Professor at Menoufia University</h3>
+                               <i class="fa fa-instagram" style="font-size:30px;color:#1EC6B6"></i>
+                               <i class="fa fa-linkedin" style="font-size:30px;color:#1EC6B6"></i>
+                               <i class="fa fa-whatsapp" style="font-size:35px;color:#1EC6B6"></i>
+                               <i class="fa fa-envelope" style="font-size:35px;color:#1EC6B6"></i>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                <div class="col-lg-4 col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
@@ -598,8 +333,8 @@
             <div class="footer-info">
                 <div class="col-xl-2 col-lg-2">
                     <div class="logo">
-                        <a href="/Home">
-                            <img src="/img/logoo.png" alt="">
+                        <a href="index.html">
+                            <img src="img/logoo.png" alt="">
                         </a>
                     </div>
                 </div> <br>
@@ -675,18 +410,9 @@
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
         Designed by <a href="">About Us Page</a>
-        
       </div>
     </div>
-</div>
-</div>
-</div>
  </footer><!-- End Footer -->
-
-
-
-
-    
 
 
   <!-- Modal -->
@@ -700,8 +426,6 @@
       </div>
     </div>
   </div>
-
-
     <!-- link that opens popup -->
 <!--     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -709,7 +433,7 @@
 
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script> -->
     <!-- JS here -->
-      <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+   <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>

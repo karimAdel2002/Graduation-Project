@@ -1,34 +1,30 @@
 import { Schema,model } from "mongoose";
-const Tourists_Acc = new Schema(
+const embassies = new Schema(
     {
 name : {
     type : String,
     required: true,
 },
-username : {
-    type : String,
-    required: true,
-},
-password : {
-    type : String,
-    required: true,
-},
-country : {
-    type : String,
-    required: true,
-},
-gender : {
-    type : String,
-    required: true,
-},
-phone : {
-    type : String,
-    required: false,
-},
 image : {
     type : String,
-    required: false,
-    default:"Avatar.png"
+    required: true,
 },
+address : {
+    type : String,
+    required: true,
+},
+telephone : {
+    type : String,
+    required: true,
+},
+email : {
+    type : String,
+    required: true,
+},
+office_Hours : {
+    type : String,
+    required: true,
+},
+
 }, { timestamps:true});
-export default model('Tourists_Acc',Tourists_Acc);
+export default model('embassies',embassies);

@@ -29,35 +29,40 @@ Tourguide_papers_original: {
     type: String,
     required: true,
 },
-phone : {
+state : {
     type : String,
     required: false,
+    default : "Blocked",
+},
+rate : {
+    type : Number,
+    required: false,
+    default: 0,
+},
+Bio : {
+    type : String,
+    required: false,
+    default: "",
+},
+facebook_link : {
+    type : String,
+    required: false,
+    default: "",
+},
+instagram_link : {
+    type : String,
+    required: false,
+    default: "",
+},
+linkedin_link : {
+    type : String,
+    required: false,
+    default: "",
 },
 image : {
     type : String,
     required: false,
-},
-work_gov1 : {
-    type : Schema.Types.ObjectId,
-    required: false,
-    ref : 'governorates'
-},
-work_gov2 : {
-    type : Schema.Types.ObjectId,
-    required: false,
-    ref : 'governorates'
-},
-Account_Nom : {
-    type : String,
-    required: false,
-},
-Rate_Nom : {
-    type : String,
-    required: false,
-},
-state : {
-    type : String,
-    required: true,
+    default: "Avatar.png",
 },
 }, { timestamps:true});
 export default model('Tourguide_Acc',tourguidesAccounts);
