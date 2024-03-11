@@ -1,51 +1,16 @@
-body{
-    background-image:url('../img/1.png');
-    
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-}
-.img-responsive{
-     margin-left: -6%;
-     margin-top: 2%;
-}
-h1{
-    text-shadow: 1px 1px 2px grey;
-    color: 323232;
-    font-family: 'jua';
-    margin-top: 2%;
-    margin-left: 2%;
-    
-}
-h6{
-    text-shadow: 1px 1px 2px grey;
-    color: 323232;
-    font-family: 'jua'; 
-    margin-left: 3%;
-}
-.box{
-    width: 30%;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-left: 100px;
-    padding-right: 100px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #ffffff;
-    text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
 
-@media only screen and (min-width: 375px) and (max-width: 812px) {
-    .box{   
-      box-sizing: border-box; 
-      width: 80%;
-      padding-left: 10%
-      padding-right: 10%;
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-  
-  }
+#drop-area {
+  text-align: center;
+}
+
+#result {
+  margin-top: 20px;
+}
