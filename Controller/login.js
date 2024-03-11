@@ -24,27 +24,27 @@ export const check = async (req, res) => {
             if(Admins!==null){
                 const isCorrectPassword = bcrypt.compareSync(password, Admins.password); //To Compare between the decrypted password in DB and entered password
                 if(!isCorrectPassword){                                                  //To Compare between the decrypted password in DB and entered password
-                    return res.send("wrong password")}
+                    return res.send("wrong Username or Password")}
                 const id = Admins._id
                 const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
                 res.cookie('token',jwtToken)
-                res.redirect("/sign_in/regisetr_tourist")
+                res.redirect("/sign_in")
              }
              if(Tourguides!==null){
                 if(Tourguides.state=="Active"){                                          // Checking Account State
                     const isCorrectPassword = bcrypt.compareSync(password, Tourguides.password);//To Compare between the decrypted password in DB and entered password
                     if(!isCorrectPassword){                                                     //To Compare between the decrypted password in DB and entered password
-                        return res.send("wrong password")}
+                        return res.send("wrong Username or Password")}
                 const id = Tourguides._id
                 const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
                 res.cookie('token',jwtToken)
-                res.redirect("/sign_in/regisetr_tourguide")
-            } else{res.send("Administrators have not yet activated your account ")}
+                res.redirect("/sign_in")
+            }   else{res.send("Administrators have not yet activated your account ")}
               }
              if(Tourists!==null){
                 const isCorrectPassword = bcrypt.compareSync(password, Tourists.password);     //To Compare between the decrypted password in DB and entered password
                 if(!isCorrectPassword){                                                        //To Compare between the decrypted password in DB and entered password
-                return res.send("wrong password")}
+                return res.send("wrong Username or Password")}
                 const id = Tourists._id
                 const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
                 res.cookie('token',jwtToken)
@@ -75,8 +75,7 @@ export const register = async (req, res) => {
             gender ,
             Tourguide_papers_new : req.file.filename,
             Tourguide_papers_original : req.file.originalname,
-            state : "Blocked"
-        });  
+        });
         res.redirect("/sign_in")}
         else {res.send("you can't sign this email")}
     }
@@ -94,47 +93,16 @@ export const register = async (req, res) => {
             username,
             password :encryotedPassword,
             country,
-            gender 
+            gender ,
+            image : "None",
         });  
         res.redirect("/sign_in")
     }
         else {res.send("you can't sign this email")}
     }
-
-    
-
 };
-
-export const regisetr_tourguide = async (req, res) => { 
-    res.render('sign_in/regisetr_tourguide')
-};
-export const regisetr_tourist = async (req, res) => { 
-    res.render('sign_in/regisetr_tourist')
-};
-export const store_tourguide = async (req, res) => { 
-    const { fname, lname, username,password,phone,governorate,gender } = req.body;
-    await Tourguide_Acc.create({
-        fname,
-        lname,
-        username,
-        password,
-        phone,
-        governorate,
-        gender,
-    })
-    res.render('sign_in/login')
-};
-export const store_tourist = async (req, res) => { 
-    const { fname, lname, username,password,phone,country,gender } = req.body;
-    await Tourists_Acc.create({
-        fname,
-        lname,
-        username,
-        password,
-        phone,
-        country,
-        gender,
-    })
+export const log_out = async (req, res) => { 
+    res.clearCookie("token");
     res.render('sign_in/login')
 };
 

@@ -1,5 +1,5 @@
 import { Schema,model } from "mongoose";
-const touristsAccounts = new Schema(
+const Tourists_Acc = new Schema(
     {
 name : {
     type : String,
@@ -13,7 +13,6 @@ password : {
     type : String,
     required: true,
 },
-
 country : {
     type : String,
     required: true,
@@ -26,5 +25,10 @@ phone : {
     type : String,
     required: false,
 },
+image : {
+    type : String,
+    required: false,
+    default:"Avatar.png"
+},
 }, { timestamps:true});
-export default model('Tourists_Acc',touristsAccounts);
+export default model('Tourists_Acc',Tourists_Acc);

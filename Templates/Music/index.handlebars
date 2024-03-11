@@ -1,0 +1,705 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Local-Music</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/kisspng-egyptian-pyramids-computer-icons-egyptian-money-5adf8f90eab4a0.2796726215246007209614.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link href="/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/gijgo.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/slick.css">
+    <link rel="stylesheet" href="/css/slicknav.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="/css/sb-admin-2.css">
+    <link href="/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <style>
+    img{
+        margin: 0 auto;
+        
+    }
+    
+      .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 10px;
+  margin: 0 auto; /* centers the card horizontally */
+  margin-bottom: 50px;
+}
+      
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+      
+      .container {
+        padding: 2px 16px;
+      }
+      .container2 {
+      width: 65%;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      margin-bottom: 50px;
+      margin-top: -130px;
+    }
+    /* top button */
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #279fcb;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  width: 70px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+
+/* loader 2 */
+.loader {
+  display: block;
+  --height-of-loader: 2px;
+  --loader-color: #249ECB;
+  width: 200px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+  
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+
+/* singer name button css  */
+button {
+  font-size: 18px;
+  color: #7A838B;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+  font-size: 30px;
+}
+
+button:focus,
+button:hover {
+  color: #249ECB;
+}
+
+button:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #040202;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+  
+}
+/* end of button */
+
+/* top loader */
+.loader {
+  height: 2px;
+  width: 300px;
+  background: rgb(44, 44, 44);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+ 
+}
+.loader .black_overlay {
+  background: linear-gradient(
+    87deg,
+    rgb(249, 249, 249) 0%,
+    #249ECB 30%,
+    rgba(241, 238, 238, 0.14) 70%,
+    rgb(254, 253, 253) 100%
+  );
+  position: absolute;
+  inset: 0px;
+  
+}
+.loader .light {
+  width: 70px;
+  height: 100%;
+  position: absolute;
+  left: -20%;
+  top: 0px;
+  background: linear-gradient(
+    87deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 204, 255) 40%,
+    rgb(0, 204, 255) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  animation: light 2s infinite ease-in-out;
+}
+
+@keyframes light {
+  from {
+    left: -30%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* social media */
+.parent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.child {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.child:hover {
+  background-color: white;
+  background-position: -100px 100px, -100px 100px;
+  transform: rotate3d(0.5, 1, 0, 30deg);
+  transform: perspective(180px) rotateX(60deg) translateY(2px);
+  box-shadow: 0px 10px 10px rgb(1, 49, 182);
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+.button:hover {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg) translateY(2px);
+  border-radius: 50%;
+}
+/* end of social */
+</style>
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="/Home">
+                                        <img style="height: 70px; width: 130px; margin-bottom: -10px;" src="/img/circular-logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a class="active" href="/Home">home</a></li>
+                                            <li><a href="/About">About</a></li>
+                                            <li><a class="" href="/Astro_Tourism">Astro-Tourism Guide</a></l/li>
+                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                        <li><a href="/Tourguides">tourgieds</a></li>
+                                                        <li><a href="/Embassies">Embassies</a></li>
+                                                        <li><a href="/Food">Popular Food</a></li>
+                                                        <li><a href="/Music">Local Music</a></li>
+                                                        <li><a href="/Companies">Companies</a></li>
+                                                        <li><a href="/Language">Language Learning Platform</a></li>
+                                                        <li><a href="/Weather">Weather Of Egypt</a></li>
+                                                        <li><a href="/Travel_Tips">Egypt Travel Tips</a></li>
+                                                        <li><a href="/Travel_Visa">Egypt Travel Visa</a></li>
+                                                </ul>
+                                            <li><a href="/Contact">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div  class="col-xl-4 col-lg-4 d-none d-lg-block">
+                                <div class="social_wrap d-flex align-items-center justify-content-end">
+                                    <div class="number">
+                                        <p> <i class="fa fa-phone"></i> 10(256)-928 256</p>
+                                    </div>
+                                    <div class="social_links d-none d-xl-block">
+                                        <ul>
+                                           
+                                              <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
+                              </svg>
+                          </a>
+                          <!-- Dropdown - User Information -->
+                          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                              aria-labelledby="userDropdown">
+                              <a class="dropdown-item" href="/karim">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                </svg>          Profile
+                              </a>
+                              
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="/sign_in/log_out" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
+                                  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+                                </svg >
+                                  Logout
+                              </a>
+                          </div>
+                      </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="seach_icon">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <div style="display: flex; align-items: center; justify-content: center;"><h1>List of local music in Egypt</h1></div>
+    
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; margin-top: -30px; margin-bottom: -75px;">
+        <img style="height: 500px; width: 980px; margin-top: -60px;" src="/img/Music/Music.jpg" alt="">
+      </div>
+      <div class="container2">
+        
+        <p>Music has been an integral part of Egyptian culture since antiquity in Egypt. Egyptian music had a significant impact on the development of ancient Greek music, and via the Greeks it was important to early European music well into the Middle Ages. Due to the thousands of-years long dominance of Egypt over its neighbors, Egyptian culture, including music and musical instruments, was very influential in the surrounding regions; for instance, the instruments claimed in the Bible to have been played by the ancient Hebrews are all Egyptian instruments as established by Egyptian archaeology. Egyptian modern music is considered as a main core of Middle Eastern and Oriental music as it has a huge influence on the region due to the popularity and huge influence of Egyptian cinema and music industries, owing to the political influence Egypt has on its neighboring countries, as well as Egypt producing the most accomplished musicians and composers in the region, specially in the 20th century, a lot of them are of international stature.[1] The tonal structure music in the East is defined by the maqamat, loosely similar to the Western modes, while the rhythm in the East is governed by the iqa'at, standard rhythmic modes formed by combinations of accented and unaccented beats and rests</p>
+        <p>for more information <a href="https://en.wikipedia.org/wiki/Music_of_Egypt">https://en.wikipedia.org/wiki/Music_of_Egypt</a></p>
+      </div>
+      <br>
+      <script>
+        let i=0;
+      </script>
+      {{#each all_Music}}
+      <div class="card">
+       
+        
+        <button  onclick="location.href='https://amrdiab.net/'">
+          {{name}}
+      </button>
+
+<!-- loader -->
+<div style="margin-left: 150px; margin-top: -20px;" class="loader">
+  <div class="light"></div>
+  <div class="black_overlay"></div>
+</div>
+      
+        <img src="/img/Music/{{image}}" alt="Avatar" style="width:100%">
+        <br>
+        <div class="container">
+          
+
+         
+              <div>
+                <h5><a href="{{Google_link}}">{{name}}</a></h5>
+                <p>{{description}}</p>
+                <p>for more information: <a href="{{Wikipedia_link}}">Wikipedia</a></p>
+                </div>
+                <br>
+                <h5>Some Popular Music</h5>
+               
+            <div class="loader"></div>
+                <div>
+                    <br>
+                    <div>
+                        <h6 >{{song_1_Name}}</h6>
+                        <p>Released:{{song_1_Released}}</p>
+                        <p id="{{_id}}7">Album: <a id="{{_id}}4" href="{{song_1_Album_link}}"sca_esv="de7a49ba27450786&"sxsrf="ACQVn0-UPSHtpOO0l8OwyCEl951NGIuzjA:1706717556639&"q="Amr+Diab+Leily+Nahary&"si="AKbGX_oBDfquzodaRrfbb9img4kPQ4fCBZjeqAiaW1svvC8uXrDUicAtVgvwoZHNKlKxQosdVxNvJ3PKwoQt6A07CSzDh85chbpElYfLUcupO6dBLE1v7TlyH6Y8DYQCUVVYIbnyBcu5qk7R0RKZJ98KHcZ6ig4law5IHhCqLCgNxgUlW0YNBT9YawMoCpGkFqSZ-mB3W6N3l04rEE_9CmL9wVT0MxcIRQ%3D%3D&"sa="X&"ved="2ahUKEwj65cetgoiEAxXKUqQEHTqmDfkQmxMoAHoECBgQAg&"biw="1536&"bih="703&"dpr="1.25">{{song_1_Album}}</a></p>
+                           <h1 id="the_singer_id" hidden>{{_id}}</h1>
+                           <h1 id="the_song_1_Album_link" hidden>{{song_1_Album_link}}</h1>
+                           <h1 id="the_ssong_1_Album" hidden>{{song_1_Album}}</h1>
+                         <script>
+                            if(document.getElementById("the_song_1_Album_link").innerHTML=="None"){
+                            document.getElementById(document.getElementById("the_singer_id").innerHTML+4).remove();
+                            document.getElementById(document.getElementById("the_singer_id").innerHTML+7).innerHTML =  "Album : " + document.getElementById("the_ssong_1_Album").innerHTML;
+                            }
+                            document.getElementById("the_song_1_Album_link").remove();
+                            document.getElementById("the_singer_id").remove();
+                            document.getElementById("the_ssong_1_Album").remove();
+                         </script>
+                <br><img style="height: 70px; margin-top: -45px; border-radius: 50%; width: 70px;" src="/img/Music/{{song_1_Image}}" alt="">
+            <audio controls>
+                <source src="/img/Music/{{song_1}}" type="audio/ogg">
+                <source src="/img/Music/{{song_1}}" type="audio/mpeg">
+              Your browser does not support the audio element.
+              </audio>
+            </div>
+            <hr>
+           
+            <div>
+              <h6 >{{song_2_Name}}</h6>
+              <p>Released : {{song_2_Released}}</p>
+              <p id="{{_id}}6">Album: <a id="{{_id}}5" href="{{song_2_Album_link}}"sca_esv="d85953eb7f2d9eac&"sxsrf="ACQVn09bQ1TUhY3Rb6SiAhjrxhyVivY7Rw:1706731086990&"q="Amr+Diab+Awedony&"si="AKbGX_qWtsfHufXsq_1jeDkJp50FstNngDxsch3EVTUjn7imcOmVSb_r7vay9MRFvL12tNTWHhogkCWjVASgZas1nb-FFQ1CiogiPruXuXxRIKcYQG4U_b0cQmVPJGqRa_ULTb0LLaxzim5Be71nWxBbn92obp0FywvZ9mFNXMu1JhdxwNrz9mL2L__SWzymjSNBBTJoCBneByX3aZID7K_55QRBseScCw%3D%3D&"sa="X&"ved="2ahUKEwiQ56rhtIiEAxW8VaQEHedIBoMQmxMoAHoECBkQAg&"biw="1536&"bih="703&"dpr="1.25">{{song_2_Album}}</a></p>
+              <h1 id="the_singer_id" hidden>{{_id}}</h1>
+              <h1 id="the_song_2_Album_link" hidden>{{song_2_Album_link}}</h1>
+              <h1 id="the_song_2_Album" hidden>{{song_2_Album}}</h1>
+              
+               <script>
+                  if(document.getElementById("the_song_2_Album_link").innerHTML=="None"){
+                    document.getElementById(document.getElementById("the_singer_id").innerHTML+5).remove();
+                    document.getElementById(document.getElementById("the_singer_id").innerHTML+6).innerHTML =  "Album : " + document.getElementById("the_song_2_Album").innerHTML;
+                  }
+                  document.getElementById("the_song_2_Album_link").remove();
+                  document.getElementById("the_singer_id").remove();
+                  document.getElementById("the_song_2_Album").remove();
+                  
+      </script>
+     <br> <img style="height: 70px; margin-top: -45px; border-radius: 50%; width: 70px;" src="/img/Music/{{song_2_Image}}" alt="">     
+  <audio controls>
+      <source src="/img/Music/{{song_2}}" type="audio/ogg">
+      <source src="/img/Music/{{song_2}}" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+  </div>
+  <hr>
+              </div>
+              </div>
+            
+              
+
+<!-- social -->
+<div class="parent">
+  <div class="child child-1">
+    <button id="{{_id}}1"  class="button btn-1" onclick="location.href='{{twitter_link}}'">
+    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#1e90ff"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></button>
+      <h1 id="the_singer_id" hidden>{{_id}}</h1>
+      <h1 id="the_singer_twitter_link" hidden>{{twitter_link}}</h1>
+     <script>
+          if(document.getElementById("the_singer_twitter_link").innerHTML=="None"){
+            document.getElementById(document.getElementById("the_singer_id").innerHTML+1).style.display="none";
+          }
+          document.getElementById("the_singer_twitter_link").remove();
+          document.getElementById("the_singer_id").remove();
+      </script>
+  </div>
+  <div class="child child-2">
+    <button id="{{_id}}2" class="button btn-2"  onclick="location.href='{{Instagram_link}}'">
+  <svg  xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" fill="#ff00ff"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></button>
+      <h1 id="the_singer_id" hidden>{{_id}}</h1>
+      <h1 id="the_singer_Instagram_link" hidden>{{Instagram_link}}</h1>
+     <script>
+          if(document.getElementById("the_singer_Instagram_link").innerHTML=="None"){
+            document.getElementById(document.getElementById("the_singer_id").innerHTML+2).style.display="none";
+          }
+          document.getElementById("the_singer_Instagram_link").remove();
+          document.getElementById("the_singer_id").remove();
+      </script>
+  </div>
+  
+
+  <div class="child child-4">
+    <button id="{{_id}}3" class="button btn-4"  onclick="location.href='{{Facebook_link}}'">
+      
+  <svg  xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512" fill="#4267B2"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg></button>
+  <h1 id="the_singer_id" hidden>{{_id}}</h1>
+  <h1 id="the_singer_Facebook_link" hidden>{{Facebook_link}}</h1>
+     <script>
+          if(document.getElementById("the_singer_Facebook_link").innerHTML=="None"){
+            document.getElementById(document.getElementById("the_singer_id").innerHTML+3).style.display="none";
+          }
+          document.getElementById("the_singer_Facebook_link").remove();
+          document.getElementById("the_singer_id").remove();
+          
+      </script>
+  </div>
+</div>
+  <!-- end of social -->
+</div>
+      {{/each}}
+    
+      
+      <!-- top button -->
+ <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+      <!-- ------------------------------------------------------------------------------------------------------------ -->
+
+   <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+                <div class="col-xl-2 col-lg-2">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="img/logoo.png" alt="">
+                        </a>
+                    </div>
+                </div> <br>
+              <p class="pb-3"><em>TRAVEL TO EGYPT is a website for helping tourists enjoy their travel to egypt </em></p>
+              <p>
+               Computer and Information <br>
+                Menoufia University<br><br>
+                <strong>Phone:</strong> +20 00 0000 0000<br>
+                <strong>Email:</strong> travel@egypt.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                  </svg></a>
+                <a href="#" class="facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                  </svg></a>
+                <a href="#" class="instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                    <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671"/>
+                    <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
+                  </svg></a>
+                <a href="#" class="google-plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+                  </svg></a>
+                <a href="#" class="linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                    <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                  </svg></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Governments of EGY</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">popular places in governments</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">tourgieds</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">places recognition</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">work as a tourguide</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>TRAVEL TO EGYPT</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
+        Designed by <a href="">About Us Page</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+  
+  <!-- Modal that make nav dynamic-->
+  <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="serch_form">
+            <input type="text" placeholder="Search" >
+            <button type="submit">search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- link that opens popup -->
+<!--     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script> -->
+    <!-- JS here -->
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+      <script src="/js/vendor/jquery-1.12.4.min.js"></script>
+      <script src="/js/popper.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+      <script src="/js/owl.carousel.min.js"></script>
+      <script src="/js/isotope.pkgd.min.js"></script>
+      <script src="/js/ajax-form.js"></script>
+      <script src="/js/waypoints.min.js"></script>
+      <script src="/js/jquery.counterup.min.js"></script>
+      <script src="/js/imagesloaded.pkgd.min.js"></script>
+      <script src="/js/scrollIt.js"></script>
+      <script src="/js/jquery.scrollUp.min.js"></script>
+      <script src="/js/wow.min.js"></script>
+      <script src="/js/nice-select.min.js"></script>
+      <script src="/js/jquery.slicknav.min.js"></script>
+      <script src="/js/jquery.magnific-popup.min.js"></script>
+      <script src="/js/plugins.js"></script>
+      <script src="/js/gijgo.min.js"></script>
+      <script src="/js/slick.min.js"></script>
+     
+  
+      
+      <!--contact js-->
+      <script src="/js/contact.js"></script>
+      <script src="/js/jquery.ajaxchimp.min.js"></script>
+      <script src="/js/jquery.form.js"></script>
+      <script src="/js/jquery.validate.min.js"></script>
+      <script src="/js/mail-script.js"></script>
+  
+  
+      <script src="/js/main.js"></script>
+    <script>
+        $('#datepicker').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+             rightIcon: '<span class="fa fa-caret-down"></span>'
+         }
+        });
+    </script>
+    <!-- /*top*/ -->
+    <script>
+      // Get the button
+      let mybutton = document.getElementById("myBtn");
+      
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+      </script>
+
+
+
+</body>
+
+</html>
