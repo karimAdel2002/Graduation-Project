@@ -1,8 +1,15 @@
 import Trip_details from "../DB Models/Trip_details.js";
+import Trips from "../DB Models/Trips.js";
 import Places from "../DB Models/Places.js";
+import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 export const go_trip_page = async (req, res) => { 
     const {name} = req.params
     const trip = await Trip_details.findOne({name}).populate('trip_id').populate('destination_1').populate('destination_2').populate('destination_3').populate('destination_4').populate('destination_5').populate('destination_6').lean()
+    const trip_price = await Trips.findOne({name}).lean()
     let idList = []
     if(trip==null){
         console.log("No information for this page")
@@ -54,5 +61,21 @@ export const go_trip_page = async (req, res) => {
     //     destination_4: "65bd863aac86aea7611880de",
     //     description_4: "The extensive Montaza Palace grounds first had the Salamlek Palace, built in 1892 by Khedive Abbas II, the last Muhammad Ali Dynasty ruler to hold the Khedive title over the Khedivate of Egypt and Sudan. It was used as a hunting lodge and residence for his companion , The larger El-Haramlek Palace and royal gardens were added to the Montaza Palace grounds, being built by King Fuad I in 1932, as a summer palace. It is in a mixture of Ottoman and Florentine styles, with two towers. One of these towers rises distinctively high above with elaborated Italian Renaissance design details. The palace has long open arcades facing the sea along each floor.President Anwar El-Sadat renovated the original Salamlek Palace as an official presidential residence. It was most recently used by former president Hosni Mubarak.",
     // });
-    res.render('Trip/index' , {trip ,idList})
+    res.render('Trip/index' , {trip ,trip_price : trip_price.price ,idList})
 };
+
+export const billing_data = async (req,res) => { 
+    const data = req.query
+    console.log(data)
+    // const id = Tourists._id
+    // const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
+    // res.cookie('token',jwtToken)
+    res.redirect('http://localhost:5000/Home')
+}
+export const payment = async (req,res) => { 
+    
+    // const id = Tourists._id
+    // const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
+    // res.cookie('token',jwtToken)
+    res.render('Trip/payment')
+}

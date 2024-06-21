@@ -21,6 +21,10 @@ gender : {
     type : String,
     required: true,
 },
+phone : {
+    type : String,
+    required: false,
+},
 Tourguide_papers_new: {
     type: String,
     required: true,
@@ -58,6 +62,10 @@ linkedin_link : {
     type : String,
     required: false,
     default: "",
+},
+languages : {
+    type : [String],
+    required: false,
 },
 image : {
     type : String,

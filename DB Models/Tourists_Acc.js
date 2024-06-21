@@ -15,15 +15,30 @@ password : {
 },
 country : {
     type : String,
-    required: true,
+    required: false,
 },
 gender : {
     type : String,
-    required: true,
+    required: false,
 },
 phone : {
     type : String,
     required: false,
+},
+facebook_link : {
+    type : String,
+    required: false,
+    default: "",
+},
+instagram_link : {
+    type : String,
+    required: false,
+    default: "",
+},
+Bio : {
+    type : String,
+    required: false,
+    default: "",
 },
 image : {
     type : String,

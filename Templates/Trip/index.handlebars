@@ -515,6 +515,8 @@ Loader Style
       </div>
              <!--end of modal -->
 
+
+
 <div class="container">
 <div class="row">
   <div class="col-lg-12">
@@ -747,14 +749,21 @@ if(document.getElementById("tour_itinerary").innerHTML !=""){
                 </div>
             </div>
             {{/each}}
+
+                
          <!--trip_end -->
+<form action="/Trip/pay" method="post">
+      <div class="col-md-2">
+        <input type="checkbox" name="name" value="{{trip.name}}" checked hidden>
+        <input type="checkbox" name="price" value="{{trip_price}}" checked hidden>
+                    <a href="/Trip/pay"><button style="color: white;" class="profile-edit-btn">Bay</button></a>
+        </div></form>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <!-- top button -->
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -848,6 +857,9 @@ if(document.getElementById("tour_itinerary").innerHTML !=""){
     </div>
   </div>
 </footer><!-- End Footer -->
+
+
+
 
 
 <!-- Modal -->

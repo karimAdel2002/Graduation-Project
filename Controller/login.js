@@ -4,6 +4,7 @@ import Admin_Acc from "../DB Models/Admin_Acc.js"
 import bcrypt from 'bcryptjs'
 import  jwt  from "jsonwebtoken"
 
+
 export const index = async (req, res) => { 
     // var salt = bcrypt.genSaltSync(10);
     // var encryotedPassword = bcrypt.hashSync("123", salt);
@@ -38,7 +39,7 @@ export const check = async (req, res) => {
                 const id = Tourguides._id
                 const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
                 res.cookie('token',jwtToken)
-                res.redirect("/sign_in")
+                res.redirect("/Home") 
             }   else{res.send("Administrators have not yet activated your account ")}
               }
              if(Tourists!==null){
@@ -94,7 +95,6 @@ export const register = async (req, res) => {
             password :encryotedPassword,
             country,
             gender ,
-            image : "None",
         });  
         res.redirect("/sign_in")
     }
@@ -103,7 +103,46 @@ export const register = async (req, res) => {
 };
 export const log_out = async (req, res) => { 
     res.clearCookie("token");
-    res.render('sign_in/login')
+    res.redirect('/sign_in')
 };
+export const google = async (req, res) => { 
+   const user = req.user;
+   const username = user.email
+   const password = user.id
+   const name = user.displayName
 
+   const Tourists = await Tourists_Acc.findOne({username }).lean();
+   if(Tourists!==null){
+    const isCorrectPassword = bcrypt.compareSync(password, Tourists.password);     //To Compare between the decrypted password in DB and entered password
+    if(!isCorrectPassword){                                                        //To Compare between the decrypted password in DB and entered password
+    return res.send("you cannot login with this email")}
+    const id = Tourists._id
+    const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
+    res.cookie('token',jwtToken)
+    res.redirect("/Home") 
+
+  }
+   if(Tourists===null){
+    var salt = bcrypt.genSaltSync(10);                                  // To Decrypt password
+    var encryotedPassword = bcrypt.hashSync(password, salt);            // To Decrypt password
+    const Tourists = await Tourists_Acc.findOne({username }).lean();    // To ensure there are no duplicate emails
+    const Tourguides = await Tourguide_Acc.findOne({username }).lean(); // To ensure there are no duplicate emails
+    const Admins = await Admin_Acc.findOne({username }).lean();         // To ensure there are no duplicate emails
+    if(Tourists===null&&Tourguides===null&&Admins===null){              // To ensure there are no duplicate emails
+    await Tourists_Acc.create({
+        name,
+        username,
+        password :encryotedPassword,
+    });
+    const new_Tourists = await Tourists_Acc.findOne({username }).lean();    // To get the id 
+    const id = new_Tourists._id
+    const jwtToken = jwt.sign(id.toJSON(),process.env.JWT_SECRET);
+    res.cookie('token',jwtToken)
+
+    res.redirect("/Home")
+}
+    else {res.send("you can't sign this email")}
+}
+ 
+};
 

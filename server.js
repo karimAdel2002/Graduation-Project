@@ -18,12 +18,10 @@ import tourguides_route from './Routes/tourguides_route.js'
 import music_route from './Routes/music_route.js'
 import astro_tourism_route from './Routes/astro_tourism_route.js'
 import embassies_route from './Routes/embassies_route.js'
+import profile_route from './Routes/profile_route.js'
 
-
-
-
-
-
+import passport from 'passport';
+import './API files/passport.js';
 
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
@@ -41,8 +39,12 @@ mongoose.connect(process.env.mongooconectionurl);
 //   .catch((e) => {
 //     console.log('not connected');
 //   });
-  
+
 const app = express();
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(cookieParser())
 
 
@@ -71,8 +73,7 @@ app.use('/Tourguides',authentication,tourguides_route);
 app.use('/Music',authentication,music_route);
 app.use('/Astro_Tourism',authentication,astro_tourism_route);
 app.use('/Embassies',authentication,embassies_route);
-
-
+app.use('/Profile',authentication,profile_route);
 
 
 
