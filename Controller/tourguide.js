@@ -2,7 +2,7 @@ import governorates from "../DB Models/governorates.js";
 import Comments from "../DB Models/Comments.js";
 import Rate from "../DB Models/Rate.js";
 import Tourguides from "../DB Models/Tourguide_Acc.js";
-import all_messages from "../DB Models/Messages.js";
+import all_messages from "../DB Models/Tourist_Messages.js";
 
 
 export const index = async (req, res) => { 
@@ -85,4 +85,12 @@ export const messages = async (req, res) => {
     }); 
 
     res.status(204).send()
+};
+export const view_profile = async (req, res) => { 
+    const { id } = req.params
+    console.log(id)
+    const the_Tourguide = await Tourguides.findOne({_id : id }).lean();
+    console.log(the_Tourguide)
+
+    res.render('Tourguides/view_profile',{the_Tourguide})
 };
