@@ -19,10 +19,14 @@ import music_route from './Routes/music_route.js'
 import astro_tourism_route from './Routes/astro_tourism_route.js'
 import embassies_route from './Routes/embassies_route.js'
 import profile_route from './Routes/profile_route.js'
+import done_route from './Routes/done_route.js'
+
 
 import passport from 'passport';
 import './API files/passport.js';
-
+import { NgrokClient } from 'ngrok';
+import ngrok from 'ngrok';
+// const ngrok = require('ngrok') ;
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
@@ -74,12 +78,17 @@ app.use('/Music',authentication,music_route);
 app.use('/Astro_Tourism',authentication,astro_tourism_route);
 app.use('/Embassies',authentication,embassies_route);
 app.use('/Profile',authentication,profile_route);
+app.use('/Done',done_route);
 
 
 
 
 
 app.listen(process.env.port, () => {
-    
-    console.log('started the application on http://localhost:' + process.env.port)
+    console.log('started the application on http://localhost:' + process.env.port);
+    ngrok.connect(process.env.port).then(ngrokUrl=>{
+        console.log("ngrok tunnel is : " ,ngrokUrl)
+    }).catch(error=>{
+        console.log("ngrok error is :",error)
+    })
 })

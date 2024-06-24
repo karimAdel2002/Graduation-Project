@@ -3,6 +3,8 @@ import Tourists from "../DB Models/Tourists_Acc.js";
 import Admin_Acc from "../DB Models/Admin_Acc.js"
 import Tourist_Messages from "../DB Models/Tourist_Messages.js";
 import Tourguide_Messages from "../DB Models/Tourguide_Messages.js";
+import bills from "../DB Models/Bills.js"
+
 import bcrypt from 'bcryptjs'
 import  jwt  from "jsonwebtoken"
 
@@ -39,9 +41,10 @@ export const index = async (req, res) => {
     const user = tourist
     const new_messages = await Tourguide_Messages.find({receiver : id , replay :"None"}).populate("sender").lean();
     const all_messages = await Tourguide_Messages.find({receiver : id,replay:{$nin:"None"}}).populate("sender").lean();
+    const Reservations = await bills.find({user_id : id}).populate("user_id").lean();
     const old_messages = all_messages-new_messages;
     const new_messages_Number = new_messages.length
-        res.render('Profile/index',{user , type , new_messages , all_messages , new_messages_Number})
+        res.render('Profile/index',{user , type , new_messages , all_messages , new_messages_Number ,Reservations})
     }
     
 };
@@ -205,5 +208,13 @@ export const message = async (req, res) => {
     }
     
     
-    
+   
+};
+
+export const  Reservations = async (req, res) => { 
+   const {_id} = req.params;
+   const bill = await bills.findOne({_id}).populate("user_id").lean();
+   const amount = bill.amount_cents/100;
+   console.log(amount)
+   res.render('Bill/bill' , {bill ,amount})
 };

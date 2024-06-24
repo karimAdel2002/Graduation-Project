@@ -288,6 +288,30 @@ Loader Style
 
 
 
+        .pay-button {
+            background-color: #249ECB;
+            color: #fff;
+            border: none;
+            padding: 10px 50px;
+            font-size: 23px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pay-button:hover {
+            background-color: #90bbca;
+            transform: translateY(-2px);
+        }
+
+        .pay-button:active {
+            background-color: #249ECB;
+            transform: translateY(2px);
+        }
+
+
     </style>
 </head>
 
@@ -756,7 +780,7 @@ if(document.getElementById("tour_itinerary").innerHTML !=""){
       <div class="col-md-2">
         <input type="checkbox" name="name" value="{{trip.name}}" checked hidden>
         <input type="checkbox" name="price" value="{{trip_price}}" checked hidden>
-                    <a href="/Trip/pay"><button style="color: white;" class="profile-edit-btn">Bay</button></a>
+                    <a href="/Trip/pay"><button class="pay-button">Pay</button></a>
         </div></form>
 </div>
 </div>

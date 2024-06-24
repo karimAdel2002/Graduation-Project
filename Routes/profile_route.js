@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { index , edit ,edit_tourguide ,edit_tourguide_social , edit_tourist ,edit_tourist_social,message} from '../Controller/profile.js';
+import { index , edit ,edit_tourguide ,edit_tourguide_social , edit_tourist ,edit_tourist_social,message ,Reservations} from '../Controller/profile.js';
 import multer from "multer";
 
 
@@ -31,6 +31,8 @@ router.post('/edit_tourist',upload2.single('new_image') , edit_tourist);
 router.post('/edit_tourguide_social', edit_tourguide_social);
 router.post('/edit_tourist_social', edit_tourist_social);
 router.post('/message', message);
+router.get('/:_id', Reservations);
+
 
 
 export default router;

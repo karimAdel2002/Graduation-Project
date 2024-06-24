@@ -30,8 +30,8 @@ async function authenticate() {
 
 
 async function card_pay( amount_cents,items,billing_data) {
+  amount_cents = amount_cents*100;
   // Authentication Request -- step 1 in the docs
-
   const accessToken = await authenticate();
   // Order Registration API -- step 2 in the docs
   const orderUrl = `${PAYMOB_URL}/ecommerce/orders`;
@@ -76,7 +76,11 @@ export const checkout = async (req, res, next) => {
             // Get the order_cart, billing_data, amount_cents from the request body
             const {name , price } = req.body;
             const trip = await Trip_details.findOne({name}).populate('trip_id').populate('destination_1').populate('destination_2').populate('destination_3').populate('destination_4').populate('destination_5').populate('destination_6').lean()
-            const user = await tourists.findOne({_id : req.id }).lean()            
+            const user = await tourists.findOne({_id : req.id }).lean()     
+            let phone = user.phone ;
+            if(phone==null){
+              phone = "00000000000";
+            }
             const items = [
               {
                 name: trip.name,
@@ -92,7 +96,7 @@ export const checkout = async (req, res, next) => {
               first_name: user.name,
               street: "NA", 
               building: "NA", 
-              phone_number: "+86(8)9135210487", 
+              phone_number: phone, 
               shipping_method: "NA", 
               postal_code: "NA", 
               city: "NA", 
@@ -107,9 +111,11 @@ export const checkout = async (req, res, next) => {
             // create the payment link
             const link1 = `https://accept.paymob.com/api/acceptance/iframes/840690?payment_token=${token}`;
             const link2 = `https://accept.paymob.com/api/acceptance/iframes/840691?payment_token=${token}`;
+            res.cookie('id',req.id)
+
             
             
 
 
-res.render('Trip/payment' , {link1 , link2})
+res.render('Trip/payment' , {link1 , link2 , name , price})
         };
