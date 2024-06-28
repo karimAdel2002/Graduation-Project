@@ -15,11 +15,11 @@ password : {
 },
 country : {
     type : String,
-    required: false,
+    required: true,
 },
 gender : {
     type : String,
-    required: false,
+    required: true,
 },
 phone : {
     type : String,

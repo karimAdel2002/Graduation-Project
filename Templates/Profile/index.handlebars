@@ -361,8 +361,8 @@
             {{/each}}
           </div>
           
-        <div class="profile-work">
-            <a id="Reservations" style="font-size: large; color: #000000;" ></i>Reservations</a><br />
+        <div id="Reservations" class="profile-work">
+            <a  style="font-size: large; color: #000000;" ></i>Reservations</a><br />
             {{#each Reservations}}
             <a href="/Profile/{{_id}}"></i>{{trip}}</a><br />
             {{/each}}
@@ -470,10 +470,8 @@
                 document.getElementById("gov").style.display = "none";
                 document.getElementById("language").style.display = "none";
                 document.getElementById("Timeline").style.display = "none";
-
-
-
-
+              }else{
+                document.getElementById("Reservations").style.display = "none";
               }
             </script>
             <!-- message -->

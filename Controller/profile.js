@@ -63,7 +63,6 @@ export const edit = async (req, res) => {
 };
 
 export const edit_tourguide = async (req, res) => { 
-    console.log(req.body)
     const {id,name,governorate,username,phone,password,Bio} = req.body;
     const the_Tourguide = await Tourguides.findOne({_id:id}).lean();
 
@@ -123,7 +122,6 @@ export const edit_tourguide_social = async (req, res) => {
 };
 
 export const edit_tourist = async (req, res) => { 
-    console.log(req.body)
     const {id,name,country,username,phone,password,Bio} = req.body;
     const the_Tourist = await Tourists.findOne({_id:id}).lean();
 
@@ -139,7 +137,6 @@ export const edit_tourist = async (req, res) => {
             await Tourists.findByIdAndUpdate(id, { $set: {password : encryotedPassword} })
         }
         if(req.file!==undefined){
-            console.log(req.file)
             const {filename} = req.file;
             deleteFile("Upload\\img\\Tourists\\"+the_Tourist.image);
             await Tourists.findByIdAndUpdate(id, { $set: {image :filename } });
@@ -165,7 +162,7 @@ export const edit_tourist = async (req, res) => {
                 console.log(req.file)
                 const {filename} = req.file;
                deleteFile("Upload\\img\\Tourists\\"+the_Tourist.image);
-                await Tourguides.findByIdAndUpdate(id, { $set: {image :filename } });
+                await Tourists.findByIdAndUpdate(id, { $set: {image :filename } });
             }
         }else{
             res.send("you can't use this username");
@@ -215,6 +212,5 @@ export const  Reservations = async (req, res) => {
    const {_id} = req.params;
    const bill = await bills.findOne({_id}).populate("user_id").lean();
    const amount = bill.amount_cents/100;
-   console.log(amount)
    res.render('Bill/bill' , {bill ,amount})
 };

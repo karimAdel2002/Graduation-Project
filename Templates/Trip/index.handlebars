@@ -776,12 +776,19 @@ if(document.getElementById("tour_itinerary").innerHTML !=""){
 
                 
          <!--trip_end -->
-<form action="/Trip/pay" method="post">
+<form action="/Trip/pay" method="post" id="pay_form">
       <div class="col-md-2">
         <input type="checkbox" name="name" value="{{trip.name}}" checked hidden>
         <input type="checkbox" name="price" value="{{trip_price}}" checked hidden>
                     <a href="/Trip/pay"><button class="pay-button">Pay</button></a>
         </div></form>
+        <a id="UserType" hidden>{{UserType}}</a>
+        <script>
+          if(document.getElementById('UserType').innerHTML == 'Tourguide' || document.getElementById('UserType').innerHTML == 'Admin'){
+            document.getElementById('pay_form').style.display = "none";
+          }
+          
+        </script>
 </div>
 </div>
 </div>

@@ -5,6 +5,8 @@ import axios from "axios";
 import dotenv from "dotenv";
 import bills from "../DB Models/Bills.js"
 import tourist from "../DB Models/Tourists_Acc.js"
+import tourguide from "../DB Models/Tourguide_Acc.js"
+import admin from "../DB Models/Admin_Acc.js"
 
 dotenv.config();
 
@@ -64,7 +66,10 @@ export const go_trip_page = async (req, res) => {
     //     description_4: "The extensive Montaza Palace grounds first had the Salamlek Palace, built in 1892 by Khedive Abbas II, the last Muhammad Ali Dynasty ruler to hold the Khedive title over the Khedivate of Egypt and Sudan. It was used as a hunting lodge and residence for his companion , The larger El-Haramlek Palace and royal gardens were added to the Montaza Palace grounds, being built by King Fuad I in 1932, as a summer palace. It is in a mixture of Ottoman and Florentine styles, with two towers. One of these towers rises distinctively high above with elaborated Italian Renaissance design details. The palace has long open arcades facing the sea along each floor.President Anwar El-Sadat renovated the original Salamlek Palace as an official presidential residence. It was most recently used by former president Hosni Mubarak.",
     // });
     res.cookie('trip_name',name)
-    res.render('Trip/index' , {trip ,trip_price : trip_price.price ,idList})
+    // Know the user type
+    const {UserType} = req.cookies;
+    console.log(UserType)
+    res.render('Trip/index' , {trip ,trip_price : trip_price.price ,idList ,UserType})
 };
 
 export const payment = async (req,res) => { 

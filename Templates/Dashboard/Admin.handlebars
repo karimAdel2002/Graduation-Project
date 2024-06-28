@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<!-- saved from url=(0118)file:///R:/4th%20year_term1/Graduation_Project/Dashboard/startbootstrap-sb-admin-2-gh-pages/tables-bef%20-%20Copy.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Admin-table</title>
+        <link rel="shortcut icon" type="image/x-icon"
+            href="/Dashboard/img/kisspng-egyptian-pyramids-computer-icons-egyptian-money-5adf8f90eab4a0.2796726215246007209614.png">
+        <!-- Custom fonts for this template -->
+        <link href="/Dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="/Dashboard/css/sb-admin-2.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this page -->
+        <link href="/Dashboard/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+
+        <style>
+            .edit {
+                background-color: #1E88E5;
+                border: none;
+                border-radius: 3px;
+                color: white;
+            }
+
+            .delete {
+                background-color: red;
+                border: none;
+                border-radius: 3px;
+                color: white;
+            }
+
+            .add {
+                color: white;
+                border-radius: 3px;
+                border: none;
+                background-color: #1E88E5;
+            }
+        </style>
+    </head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Dashboard">
+                <div class="sidebar-brand-icon rotate-n-15">
+
+                </div>
+                <div class="sidebar-brand-text mx-3"><img
+                        style="height: 190px; margin-top: 190px; margin-bottom: 195px; " src="img/Untitled-1.png"
+                        alt=""></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/Dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Addons
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Pages</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Action pages</h6>
+                        <a class="collapse-item" href="/Dashboard/Activation">Account Activation</a>
+                        <a class="collapse-item" href="/Dashboard/Admin">Bills</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Other Pages:</h6>
+                        <a class="collapse-item" href="/Dashboard/404">404 Page</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="/Dashboard/Contact">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Contact</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
+                    aria-expanded="true" aria-controls="collapseTable">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span>
+                </a>
+                <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Informations:</h6>
+                        <a class="collapse-item" href="/Dashboard/Governorate">Governates</a>
+                        <a class="collapse-item" href="/Dashboard/Restaurant">Restaurants</a>
+                        <a class="collapse-item" href="/Dashboard/Trip">Trip</a>
+                        <a class="collapse-item" href="/Dashboard/Trip_Details">Trip-Details</a>
+                        <a class="collapse-item" href="/Dashboard/Place">Places</a>
+                        <a class="collapse-item" href="/Dashboard/Music">Music</a>
+                        <a class="collapse-item" href="/Dashboard/Food">Food</a>
+                        <a class="collapse-item" href="/Dashboard/Embassy">Embassies</a>
+                        <a class="collapse-item" href="/Dashboard/Company">Companies</a>
+                      
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">People:</h6>
+                        <a class="collapse-item" href="/Dashboard/Tourist">Tourists</a>
+                        <a class="collapse-item" href="/Dashboard/Tourguide">Tourguides</a>
+                        <a class="collapse-item" href="/Dashboard/Admin">Admins</a>
+                        
+                    
+                    
+                   
+                </div>
+                </div>
+            </li>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+            <!-- <div class="sidebar-card d-none d-lg-flex">
+                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+            </div> -->
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                            problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how
+                                            would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with
+                                            the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Admin</h1>
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                data-target="#myModal">Add New Data Row</button>
+                            <!-- Modal -->
+                            <form action="/Dashboard/Admin/Add" method="post">
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">×</button>
+
+                                            </div>
+                                            <div class="modal-body">
+
+
+
+                                                <div id="formContainer">
+
+                                                    <input type="text" name="fname"
+                                                        placeholder="Enter F-Name...">
+                                                    <br> <br>
+                                                    <input type="text" name="lname"
+                                                        placeholder="Enter L-Name...">
+                                                    <br> <br>
+                                                    <input type="text"  name="username"
+                                                        placeholder="Enter UserName...">
+                                                    <br> <br>
+                                                    <input  name="password"
+                                                        placeholder="Enter password...">
+                                                    <br> <br>
+                                                    <button type="submit"
+                                                        style="background-color: #1E88E5; border-radius: 3px; border: none; color: white;">Add</button>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- End Modal -->
+
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered dataTable no-footer" id="dataTable"
+                                                width="100%" cellspacing="0" role="grid"
+                                                aria-describedby="dataTable_info" style="width: 100%;">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                            aria-controls="dataTable" rowspan="1" colspan="1"
+                                                            aria-sort="ascending"
+                                                            aria-label="F-Name: activate to sort column descending"
+                                                            style="width: 198.2px;">F-Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1"
+                                                            aria-label="L-name: activate to sort column ascending"
+                                                            style="width: 169.2px;">L-Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1"
+                                                            aria-label="UserName: activate to sort column ascending"
+                                                            style="width: 242.2px;">UserName</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1"
+                                                            aria-label="Password: activate to sort column ascending"
+                                                            style="width: 229.2px;">Password</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1" aria-label="Action
+                                        : activate to sort column ascending" style="width: 172.2px;">Action
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                {{#each admins}}
+                                                <tr role="row">
+                                                    <td style="width: 198.2px;">{{fname}}</td>
+                                                    <td style="width: 169.2px;">{{lname}}</td>
+                                                    <td style="width: 242.2px;">{{username}}</td>
+                                                    <td style="width: 229.2px;">{{password}}</td>
+                                                    <td style="width: 172.2px;">
+
+                                                        <button class="edit" data-toggle="modal"
+                                                            data-target="#EditModal{{_id}}"> <i
+                                                                class="fas fa-info-circle"></i></button>
+                                                        <button type="reset" class="delete"><a class="delete"
+                                                                href="/Dashboard/Admin/Delete/{{_id}}">X</a></button>
+
+                                                    </td>
+                                                </tr>
+                                                <!-- Edit Modal Start-->
+                                                <div class="modal fade" id="EditModal{{_id}}" role="dialog">
+                                                    <form action="/Dashboard/Admin/Edit" method="post">
+                                                        <div class="modal-dialog modal-sm">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div id="formContainer">
+                                                                        <input type="checkbox" value="{{_id}}" name="id"
+                                                                            checked hidden>
+                                                                        <input type="text" name="fname" id="nameInput"
+                                                                            value="{{fname}}" required>
+                                                                        <br><br>
+                                                                        <input type="text" name="lname" id="nameInput"
+                                                                            value="{{lname}}" required>
+                                                                        <br><br>
+                                                                        <input type="text" name="username"
+                                                                            id="userInput" value="{{username}}"
+                                                                            required>
+                                                                        <br><br>
+                                                                        <input id="passInput" name="password"
+                                                                            placeholder="Enter Password...">
+                                                                        <br><br>
+                                                                        <button type="submit" class="add">Edit</button>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- Edit Modal End -->
+                                                {{/each}}
+
+                                                <tbody>
+                                                    <tr class="odd"></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded"
+        href="/Dashboard/startbootstrap-sb-admin-2-gh-pages/tables-bef%20-%20Copy.html#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary"
+                        href="file:///R:/4th%20year_term1/Graduation_Project/Dashboard/startbootstrap-sb-admin-2-gh-pages/login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/Dashboard/./SB Admin 2 - Tables_files/jquery.min.js.download"></script>
+    <script src="/Dashboard/./SB Admin 2 - Tables_files/bootstrap.bundle.min.js.download"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/Dashboard/./SB Admin 2 - Tables_files/jquery.easing.min.js.download"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/Dashboard/./SB Admin 2 - Tables_files/sb-admin-2.min.js.download"></script>
+
+    <!-- Page level plugins -->
+    <script src="/Dashboard/./SB Admin 2 - Tables_files/jquery.dataTables.min.js.download"></script>
+    <script src="/Dashboard/./SB Admin 2 - Tables_files/dataTables.bootstrap4.min.js.download"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/Dashboard/./SB Admin 2 - Tables_files/datatables-demo.js.download"></script>
+
+</body>
+
+</html>
