@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { index, Admin, Admin_Add, Admin_Delete, Tourist, Tourist_Add, Tourist_Delete, 
+import { index,show_404, Admin, Admin_Add, Admin_Delete, Tourist, Tourist_Add, Tourist_Delete, 
     Tourist_Edit, Admin_Edit, Governorate, Governorate_Add, Governorate_Delete, Governorate_Edit,
     Trip,Trip_Add,Trip_Delete,Trip_Edit,Trip_Details,Trip_Details_Add,Trip_Details_Delete,Trip_Details_Edit,
     Company,Company_Add,Company_Delete,Company_Edit,Embassy,Embassy_Add,Embassy_Delete,Embassy_Edit,
-    Food,Food_Add,Food_Delete,Food_Edit,Place,Place_Add,Place_Delete,Place_Edit,
+    Food,Food_Add,Food_Delete,Food_Edit,Place,Place_Add,Place_Delete,Place_Edit,Tourguide,Tourguide_Add,Tourguide_Delete,Tourguide_Edit,
+    Activation,Activation_CV,Active,Bill,Bill_Show,Bills_Delete,Contact,Send,Done,Music,Music_Add,Music_Delete,Music_Edit
  } from '../Controller/Dashboard.js';
 import multer from "multer";
 const router = new Router();
@@ -73,14 +74,48 @@ var Place_storage = multer.diskStorage({
         cb(null, 'Upload/img/Places')
     },
     filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.fieldname + '-' + file.originalname)
+    }
+})
+var Place_upload = multer({ storage: Place_storage }).fields([{name: "main_image"}, {name: "image_1"}, {name: "image_2"}, {name: "image_3"}, {name: "image_4"}, {name: "image_5"}, {name: "image_6"}]);
+// ---------------------------------------------------------------
+var Tourguide_Doc_storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'Upload/Tourguide_Doc')
+    },
+    filename: function (req, file, cb) { 
+      cb(null, file.fieldname + '-' +Date.now()+'.pdf')
+    }
+  })
+  var Tourguide_Doc_upload = multer({ storage: Tourguide_Doc_storage })
+// ---------------------------------------------------------------
+var Tourguide_image_storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'Upload/img/Tour Guides')
+    },
+    filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname)
     }
 })
-var Place_upload = multer({ storage: Place_storage })
+var Tourguide_image_upload = multer({ storage: Tourguide_image_storage })
 // ---------------------------------------------------------------
+var music_storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'Upload/img/Music')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+})
+var music_upload = multer({ storage: music_storage }).fields([{name: "image"}, {name: "song_1_Image"}, {name: "song_1"}, {name: "song_2_Image"}, {name: "song_2"}]);
+// ---------------------------------------------------------------
+
+
 
 // --------------------Index------------------------
 router.get('/', index);
+// --------------------404------------------------
+router.get('/404', show_404);
 // --------------------Admin------------------------
 router.get('/Admin', Admin);
 router.post('/Admin/Add', Admin_Add);
@@ -131,8 +166,32 @@ router.post('/Food/Edit', Food_upload.single('Food_image'), Food_Edit);
 
 // --------------------Place------------------------
 router.get('/Place', Place);
-router.post('/Place/Add', Place_upload.array('Place_image',7) , Place_Add);
+router.post('/Place/Add', Place_upload, Place_Add);
 router.get('/Place/Delete/:id', Place_Delete);
-router.post('/Place/Edit', Place_upload.array('Place_image',7), Place_Edit);
+router.post('/Place/Edit', Place_upload, Place_Edit);
 
+// --------------------Tourguide------------------------
+router.get('/Tourguide', Tourguide);
+router.post('/Tourguide/Add', Tourguide_image_upload.single('Tourguide_image'), Tourguide_Add);
+router.get('/Tourguide/Delete/:id', Tourguide_Delete);
+router.post('/Tourguide/Edit', Tourguide_image_upload.single('Tourguide_image'), Tourguide_Edit);
+// --------------------Activation------------------------
+router.get('/Activation', Activation);
+router.get('/Activation/:id', Activation_CV);
+router.post('/Activation/Active', Active);
+// --------------------Bills------------------------
+router.get('/Bill', Bill);
+router.get('/Bill/Bill_Show/:id', Bill_Show);
+router.get('/Bill/Delete/:id', Bills_Delete);
+
+// --------------------Contact------------------------
+router.get('/Contact', Contact);
+router.post('/Contact/Send', Send);
+router.get('/Contact/Done/:id', Done);
+
+// --------------------Music------------------------
+router.get('/Music', Music);
+router.post('/Music/Add', music_upload, Music_Add);
+router.get('/Music/Delete/:id', Music_Delete);
+router.post('/Music/Edit', music_upload, Music_Edit);
 export default router;

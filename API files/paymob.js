@@ -107,7 +107,6 @@ export const checkout = async (req, res, next) => {
             authenticate()
             // get the payment token for this order
             const token = await card_pay(price,items,billing_data);
-        
             // create the payment link
             const link1 = `https://accept.paymob.com/api/acceptance/iframes/840690?payment_token=${token}`;
             const link2 = `https://accept.paymob.com/api/acceptance/iframes/840691?payment_token=${token}`;
