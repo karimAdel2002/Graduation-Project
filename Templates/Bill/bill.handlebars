@@ -3,39 +3,40 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Bill</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- <link rel="manifest" href="site.webmanifest"> -->
   <link rel="shortcut icon" type="image/x-icon"
-    href="img/kisspng-egyptian-pyramids-computer-icons-egyptian-money-5adf8f90eab4a0.2796726215246007209614.png">
+    href="/img/kisspng-egyptian-pyramids-computer-icons-egyptian-money-5adf8f90eab4a0.2796726215246007209614.png">
   <!-- Place favicon.ico in the root directory -->
 
   <!-- CSS here -->
-  <link href="/vendor/aos/aos.css" rel="stylesheet">
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="/css/magnific-popup.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/themify-icons.css">
-  <link rel="stylesheet" href="/css/nice-select.css">
-  <link rel="stylesheet" href="/css/flaticon.css">
-  <link rel="stylesheet" href="/css/gijgo.css">
-  <link rel="stylesheet" href="/css/animate.css">
-  <link rel="stylesheet" href="/css/slick.css">
-  <link rel="stylesheet" href="/css/slicknav.css">
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
-
-  <link rel="stylesheet" href="/css/style.css">
+   <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/style.css">
   <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice</title>
+   <style>
+    body {
+      font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .header {
+      width: 100%;
+      height: 60px;
+      background-color: #f8f8f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
     .invoice-box {
       max-width: 800px;
       margin: auto;
@@ -44,18 +45,20 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       font-size: 16px;
       line-height: 24px;
-      font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
       color: #555;
+      position: relative;
+      background-color: #fff;
     }
 
     .invoice-box table {
       width: 100%;
       line-height: inherit;
       text-align: left;
+      border-collapse: collapse;
     }
 
     .invoice-box table td {
-      padding: 5px;
+      padding: 8px;
       vertical-align: top;
     }
 
@@ -100,6 +103,27 @@
       font-weight: bold;
     }
 
+    .back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      z-index: 1000; /* Ensure button is above other elements */
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+
     @media only screen and (max-width: 600px) {
       .invoice-box table tr.top table td {
         width: 100%;
@@ -111,6 +135,11 @@
         width: 100%;
         display: block;
         text-align: center;
+      }
+
+      .back-button {
+        top: 10px;
+        right: 10px;
       }
     }
 
@@ -135,199 +164,177 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-  <!-- header-start -->
   <header>
-    <div class="header-area ">
-      <div id="sticky-header" class="main-header-area">
-        <div class="container-fluid">
-          <div class="header_bottom_border">
-            <div class="row align-items-center">
-              <div class="col-xl-2 col-lg-2">
-                <div class="logo">
-                  <a href="/Home">
-                    <img style="height: 70px; width: 130px; margin-bottom: -10px;" src="/img/circular-logo.png" alt="">
-                  </a>
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6">
-                <div class="main-menu  d-none d-lg-block">
-                  <nav>
-                    <ul id="navigation">
-                      <li><a class="active" href="/Home">home</a></li>
-                      <li><a href="/About">About</a></li>
-                      <li><a class="" href="/Astro_Tourism">Astro-Tourism Guide</a></l /li>
-                      <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                        <ul class="submenu">
-                          <li><a href="/Tourguides">tourgieds</a></li>
-                          <li><a href="/Embassies">Embassies</a></li>
-                          <li><a href="/Food">Popular Food</a></li>
-                          <li><a href="/Music">Local Music</a></li>
-                          <li><a href="/Companies">Companies</a></li>
-                          <li><a href="/Language">Language Learning Platform</a></li>
-                          <li><a href="/Weather">Weather Of Egypt</a></li>
-                          <li><a href="/Travel_Tips">Egypt Travel Tips</a></li>
-                          <li><a href="/Travel_Visa">Egypt Travel Visa</a></li>
-                        </ul>
-                      <li><a href="/Contact">Contact</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-              <div class="col-xl-4 col-lg-4 d-none d-lg-block">
-                <div class="social_wrap d-flex align-items-center justify-content-end">
-                  <div class="number">
-                    <p> <i class="fa fa-phone"></i> 10(256)-928 256</p>
-                  </div>
-                  <div class="social_links d-none d-xl-block">
-                    <ul>
+    <div class="header-area "><div id="sticky-header" class="main-header-area"><div class="container-fluid">
+    <div class="header_bottom_border"><div class="row align-items-center"><div class="col-xl-2 col-lg-2"><div class="logo"><a href="/Home">
+    <img style="height: 70px; width: 130px; margin-bottom: -10px;"src="/img/circular-logo.png" alt=""></a></div></div>
+    <div class="col-xl-6 col-lg-6"><div class="main-menu  d-none d-lg-block"><nav><ul id="navigation">
+    <li><a class="active" href="/Home">home</a></li><li><a class="active" href="/Tourguides">Tour guides</a></li>
+    <li><a class="" href="/Astro_Tourism">Astro-Tourism Guide</a></l /li><li><a href="#">pages <i class="ti-angle-down"></i></a>
+     <ul class="submenu"><li><a href="/"></a></li><li><a href="/Embassies">Embassies</a></li><li><a href="/Food">Popular Food</a></li>
+     <li><a href="/Music">Local Music</a></li><li><a href="/Companies">Companies</a></li>
+     <li><a href="/Language">Language Learning Platform</a></li><li><a href="/Weather">Weather Of Egypt</a></li>
+     <li><a href="/Travel_Tips">Egypt Travel Tips</a></li><li><a href="/Travel_Visa">Egypt Travel Visa</a></li>
+     <li><a href="/Currency_Converter">Currency Exchange</a></li></ul><li><a href="/About">About</a></li>
+     <li><a href="/Contact" id="contact">Contact</a></li> </ul></nav></div></div><div class="col-xl-4 col-lg-4 d-none d-lg-block">
+    <div class="social_wrap d-flex align-items-center justify-content-end"><div class="number">
+    <a href="/Translation"> <img style="height: 7%; width:7%;"src="/img/hieroglyph.png" title="antique icons">
+    </img>Translate into Hieroglyphs </a></div><div class="social_links d-none d-xl-block"><ul>
+    <!-- Nav Item - User Information -->
+     <li class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown"role="button" data-toggle="dropdown" 
+    aria-haspopup="true"aria-expanded="false"><span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"fill="currentColor" class="bi bi-person-lines-fill"viewBox="0 0 16 16">
+    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6  3 6 4-1 1-11zM11 3.5a.5.5 0 0 1.5-.5h4a.5.5 0 0 1 0 1h-4a.5.
+     5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.50 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+     </svg></a>
+    <!-- Dropdown - User Information -->
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+    <a class="dropdown-item" href="/Profile" id="Profile"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+    fill="currentColor" class="bi bi-person-fill"viewBox="0 0 16 16">
+     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" /></svg> Profile</a>
+    <a class="dropdown-item" href="/Dashboard" id="Dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+     fill="currentColor" class="bi bi-person-fill"viewBox="0 0 16 16">
+     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0 -6 3 3 0 0 0 0 6" /></svg> Dashboard</a>
+     <div class="dropdown-divider"></div><a class="dropdown-item" href="/sign_in/log_out"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="16" height="16"fill="currentColor" class="bi bi-box-arrow-in-left"viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 3.5a
+     .5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 
+      0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z" /><path fill-rule="evenodd"d="M4.146 8.354a.5.5 0
+       0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z" /></svg>Logout</a> </div>
+                                            </li>
+                                        </ul>
+                                        <script>
+                                            function getCookie(cname) {
+                                                let name = cname + "=";
+                                                let decodedCookie = decodeURIComponent(document.cookie);
+                                                let ca = decodedCookie.split(';');
+                                                for (let i = 0; i < ca.length; i++) {
+                                                    let c = ca[i];
+                                                    while (c.charAt(0) == ' ') {
+                                                        c = c.substring(1);
+                                                    }
+                                                    if (c.indexOf(name) == 0) {
+                                                        return c.substring(name.length, c.length);
+                                                    }
+                                                }
+                                                return "";
+                                            }
+                                            let x = getCookie("UserType")
+                                            if (x == "Admin") {
+                                                document.getElementById('Profile').style.display = 'none'
+                                                document.getElementById('contact').style.display = 'none'
 
-                      <!-- Nav Item - User Information -->
-                      <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                            <path
-                              d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
-                          </svg>
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                          aria-labelledby="userDropdown">
-                          <a class="dropdown-item" href="/karim">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                              class="bi bi-person-fill" viewBox="0 0 16 16">
-                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                            </svg> Profile
-                          </a>
-
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/sign_in/log_out">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                              class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd"
-                                d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z" />
-                              <path fill-rule="evenodd"
-                                d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
-                            </svg>
-                            Logout
-                          </a>
+                                            } else {
+                                                document.getElementById('Dashboard').style.display = 'none'
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="seach_icon">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
                         </div>
-                      </li>
-
-                    </ul>
-                  </div>
+                    </div>
                 </div>
-              </div>
-              <div class="seach_icon">
-                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
-                  <i class="fa fa-search"></i>
-                </a>
-              </div>
-              <div class="col-12">
-                <div class="mobile_menu d-block d-lg-none"></div>
-              </div>
             </div>
-          </div>
-
         </div>
-      </div>
-    </div>
-  </header>
-  <!-- header-end -->
-<br><br><br>
- <div class="col-md-2" style="margin-left: 1050px;" >
-          <a href="/Profile"><button style="color: white; margin: 10%;  " class="profile-edit-btn">Back</button></a>
-        </div>
-  <div class="container">
-   
-        <br>
-    <div class="invoice-box">
-      <table cellpadding="0" cellspacing="0">
-        <tr class="top">
-          <td colspan="2">
-            <table>
-              <tr>
-                <td class="title">
-                  <img src="/img/circular-logo.png" style="width: 100%; max-width: 150px" />
-                </td>
+    </header>
+    <!-- header-end -->
+ <div class="header">
+    <h1>Trip Invoice</h1>
+  </div>
 
-                <td>
-                  <h2> Trip BILL </h2> <br>
-                  <h3> {{bill.trip}} </h3> <br />
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+  <div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="top">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td class="title">
+                <br>
+                <img src="/img/circular-logo.png" style="width: 100%; max-width: 150px;" alt="Company logo">
+              </td>
+              <td>
+                <a id="back" href="/Profile" class="back-button">Back</a>
+    <p id="check" hidden>{{check}}</p>
+    <script>
+      if(document.getElementById('check').innerHTML == 'Admin'){
+        document.getElementById('back').href = "/Dashboard/Bill";
+      }
+    </script><br><br><br>
+                <h3>{{bill.trip}}</h3>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-        <tr class="information">
-          <td colspan="2">
-            <table>
-              <tr>
-                <td>
-                  Name.<br />
-                  Username<br />
-                  Country <br>
-                  Phone
-                </td>
+      <tr class="information">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td>
+                <strong>Name:</strong><br />
+                <strong>Username:</strong><br />
+                <strong>Country:</strong><br />
+                <strong>Phone:</strong>
+              </td>
+              <td>
+                {{bill.user_id.name}}<br />
+                {{bill.user_id.username}}<br />
+                {{bill.user_id.country}}<br />
+                {{bill.user_id.phone}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-                <td>
-                  {{bill.user_id.name}}<br />
-                  {{bill.user_id.username}}<br />
-                  {{bill.user_id.country}} <br>
-                  {{bill.user_id.phone}}
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+      <tr class="heading">
+        <td>Payment Method</td>
+        <td>MasterCard</td>
+      </tr>
 
-        <tr class="heading">
-          <td>Payment Method</td>
+      <tr class="details">
+        <td>
+          <strong>Order:</strong><br />
+          <strong>Owner:</strong><br />
+          <strong>Created at:</strong><br />
+          <strong>Pending:</strong><br />
+          <strong>Success:</strong><br />
+          <strong>Currency:</strong>
+        </td>
+        <td>
+          {{bill.order}}<br />
+          {{bill.owner}}<br />
+          {{bill.created_at}}<br />
+          {{bill.pending}}<br />
+          {{bill.success}}<br />
+          {{bill.currency}}
+        </td>
+      </tr>
 
-          <td>MasterCard</td>
-        </tr>
+      <tr class="heading">
+        <td>Item</td>
+        <td>Price</td>
+      </tr>
 
-        <tr class="details">
-          <td>
-            Order <br>
-            Owner <br>
-            created at <br>
-            pending <br>
-            success <br>
-            currency
-          </td>
-          <td>
-            {{bill.order}} <br>
-            {{bill.owner}} <br>
-            {{bill.created_at}} <br>
-            {{bill.pending}} <br>
-            {{bill.success}} <br>
-            {{bill.currency}}
-            </td>
-        </tr>
+      <tr class="item">
+        <td>1 Ticket/s</td>
+        <td>{{amount}}</td>
+      </tr>
 
-        <tr class="heading">
-          <td>Item</td>
-          
-          <td>Price</td>
-        </tr>
-
-        <tr class="item">
-          <td> 1 Ticket/s</td>
-          
-          <td>{{amount}}</td>
-        </tr>
-
-        <tr class="total">
-          <td></td>
-          <td>Total: {{amount}}</td>
-        </tr>
-      </table>
-    </div>
-    
+      <tr class="total">
+        <td></td>
+        <td>Total: {{amount}}</td>
+      </tr>
+    </table>
   </div>
 <br><br><br>
 
@@ -443,34 +450,10 @@
 
   <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script> -->
   <!-- JS here -->
-  <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
-  <script src="/js/vendor/jquery-1.12.4.min.js"></script>
-  <script src="/js/popper.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/owl.carousel.min.js"></script>
-  <script src="/js/isotope.pkgd.min.js"></script>
-  <script src="/js/ajax-form.js"></script>
-  <script src="/js/waypoints.min.js"></script>
-  <script src="/js/jquery.counterup.min.js"></script>
-  <script src="/js/imagesloaded.pkgd.min.js"></script>
-  <script src="/js/scrollIt.js"></script>
-  <script src="/js/jquery.scrollUp.min.js"></script>
-  <script src="/js/wow.min.js"></script>
-  <script src="/js/nice-select.min.js"></script>
-  <script src="/js/jquery.slicknav.min.js"></script>
-  <script src="/js/jquery.magnific-popup.min.js"></script>
-  <script src="/js/plugins.js"></script>
-  <script src="/js/gijgo.min.js"></script>
-  <script src="/js/slick.min.js"></script>
-
-
-
-  <!--contact js-->
-  <script src="/js/contact.js"></script>
-  <script src="/js/jquery.ajaxchimp.min.js"></script>
-  <script src="/js/jquery.form.js"></script>
-  <script src="/js/jquery.validate.min.js"></script>
-  <script src="/js/mail-script.js"></script>
+   <script src="/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
 
 
 

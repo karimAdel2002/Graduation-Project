@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist-table</title>
+    <title>Tourguide-table</title>
     <link rel="shortcut icon" type="image/x-icon"
         href="/Dashboard/img/kisspng-egyptian-pyramids-computer-icons-egyptian-money-5adf8f90eab4a0.2796726215246007209614.png">
     <!-- Custom fonts for this template -->
@@ -341,7 +341,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tourist</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Tourguide</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -349,7 +349,7 @@
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                 data-target="#myModal">Add New Row</button>
                             <!-- Add Modal Start-->
-                            <form action="/Dashboard/Tourist/Add" method="post" enctype="multipart/form-data">
+                            <form action="/Dashboard/Tourguide/Add" method="post" enctype="multipart/form-data">
                                 <div class="modal fade" id="myModal" role="dialog">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
@@ -361,32 +361,118 @@
                                             <div class="modal-body">
                                                 <div id="formContainer">
 
-                                                    <input type="text" name="name" id="nameInput"
-                                                        placeholder="Enter F-Name..." required>
+                                                    <input type="text" name="name" placeholder="Enter Name..." required>
                                                     <br><br>
 
-                                                    <input type="text" name="username" id="userInput"
-                                                        placeholder="Enter UserName..." required>
+                                                    <input type="text" name="username" placeholder="Enter UserName..."
+                                                        required>
                                                     <br><br>
                                                     <input id="passInput" name="password"
                                                         placeholder="Enter Password..." required>
                                                     <br><br>
-                                                    <input type="text" name="country" id="countryInput"
-                                                        placeholder="Enter Country..." required>
+                                                    <label for="">Enter Governorate</label>
+                                                    <select type="text" name="governorate" id="combo{{_id}}"
+                                                                placeholder="Add New Language..." required>
+                                                                <option value="Cairo">Cairo</option>
+                                                                <option value="Alexandria">Alexandria</option>
+                                                                <option value="Giza">Giza</option>
+                                                                <option value="Qalyubia">Qalyubia</option>
+                                                                <option value="Port Said">Port Said</option>
+                                                                <option value="Suez">Suez</option>
+                                                                <option value="Luxor">Luxor</option>
+                                                                <option value="Asyut">Asyut</option>
+                                                                <option value="Ismailia">Ismailia</option>
+                                                                <option value="Gharbia">Gharbia</option>
+                                                                <option value="Dakahlia">Dakahlia</option>
+                                                                <option value="Aswan">Aswan</option>
+                                                                <option value="Sharqia">Sharqia</option>
+                                                                <option value="Beheira">Beheira</option>
+                                                                <option value="Minya">Minya</option>
+                                                                <option value="Faiyum">Faiyum</option>
+                                                                <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                                                                <option value="Beni Suef">Beni Suef</option>
+                                                                <option value="Qena">Qena</option>
+                                                                <option value="Monufia">Monufia</option>
+                                                                <option value="Red Sea">Red Sea</option>
+                                                                <option value="Sohag">Sohag</option>
+                                                                <option value="North Sinai">North Sinai</option>
+                                                                <option value="Matruh">Matruh</option>
+                                                                <option value="Qalyubia">Qalyubia</option>
+                                                                <option value="New Valley">New Valley</option>
+                                                                <option value="South Sinai">South Sinai</option>
+                                                                <option value="Damietta">Damietta</option>
+                                                                <option value="Menoufia">Menoufia</option>
+                                                                
+                                                            </select>
+                                                            <br><br>
+                                                    <label for="cars">Work Governorate 1:</label>
+                                                    <select type="text" name="work_gov_1"
+                                                        placeholder="Enter Goverate..." required>
+                                                        {{#each governorates}}
+                                                        <option value="{{_id}}">{{name}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                    <br><br>
+                                                    <label for="cars">Work Governorate 2:</label>
+                                                    <select type="text" name="work_gov_2"
+                                                        placeholder="Enter Goverate...">
+                                                        <option value="None">None</option>
+                                                        {{#each governorates}}
+                                                        <option value="{{_id}}">{{name}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                    <br><br>
+                                                    <label for="cars">Work Governorate 3:</label>
+                                                    <select type="text" name="work_gov_3"
+                                                        placeholder="Enter Goverate...">
+                                                        <option value="None">None</option>
+                                                        {{#each governorates}}
+                                                        <option value="{{_id}}">{{name}}</option>
+                                                        {{/each}}
+                                                    </select>
                                                     <br><br>
 
-                                                    <input type="text" name="phone" id="phoneInput"
-                                                        placeholder="Enter Phone...">
+                                                    <input type="text" name="phone" placeholder="Enter Phone...">
                                                     <br><br>
-                                                    <input type="text" name="facebook_link" id="faceInput"
-                                                        placeholder="Enter Facebook-Link...">
+                                                    <input type="text" name="Bio" placeholder="Enter Bio...">
                                                     <br><br>
-                                                    <input type="text" name="instagram_link" id="instaInput"
-                                                        placeholder="Enter Instagram-Link...">
+                                                    <input type="text" name="facebook_link"
+                                                        placeholder="Enter Faceook-Lik...">
                                                     <br><br>
-                                                    <input type="text" name="Bio" id="bioInput"
-                                                        placeholder="Enter Bio...">
+                                                    <input type="text" name="instagram_link"
+                                                        placeholder="Enter Instagram-Lik...">
                                                     <br><br>
+                                                    <input type="text" name="linkedin_link"
+                                                        placeholder="Enter Linkedin-Lik...">
+                                                    <br><br>
+                                                    <label for="">Enter Language</label>
+                                                    <select type="text" name="language"
+                                                                placeholder="Add New Language..." required>
+                                                                <option value="English">English</option>
+                                                                <option value="Mandarin Chinese">Mandarin Chinese</option>
+                                                                <option value="Spanish">Spanish</option>
+                                                                <option value="Hindi">Hindi</option>
+                                                                <option value="French">French</option>
+                                                                <option value="Portuguese">Portuguese</option>
+                                                                <option value="Russian">Russian</option>
+                                                                <option value="Japanese">Japanese</option>
+                                                                <option value="German">German</option>
+                                                                <option value="Javanese">Javanese</option>
+                                                                <option value="Wu Chinese">Wu Chinese</option>
+                                                                <option value="Vietnamese">Vietnamese</option>
+                                                                <option value="Korean">Korean</option>
+                                                                <option value="Turkish">Turkish</option>
+                                                                <option value="Italian">Italian</option>
+                                                                <option value="Polish">Polish</option>
+                                                                <option value="Ukrainian">Ukrainian</option>
+                                                                <option value="Romanian">Romanian</option>
+                                                                <option value="Dutch">Dutch</option>
+                                                                <option value="Greek">Greek</option>
+                                                                <option value="Hungarian">Hungarian</option>
+                                                                <option value="Swedish">Swedish</option>
+                                                                <option value="Czech">Czech</option>
+                                                            </select>
+                                                            <br><br>
                                                     <div style="margin-top: -10px;"
                                                         class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
@@ -395,7 +481,7 @@
 
                                                         <div class="form-check form-check-inline mb-0 me-4">
                                                             <input class="form-check-input" type="radio" name="gender"
-                                                                id="femaleGender" value="female" checked />
+                                                                required id="femaleGender" value="female" checked />
                                                             <br> <label class="form-check-label"
                                                                 for="femaleGender">Female</label>
                                                         </div>
@@ -408,8 +494,8 @@
 
                                                         </div>
                                                     </div>
-                                                    <input type="file" name="Tourist_image" id="imageInput"
-                                                        accept="image/*" placeholder="Enter Image...">
+                                                    <input type="file" name="Tourguide_image" accept="image/*"
+                                                        placeholder="Enter Image...">
                                                     <br><br>
                                                     <button type="submit" class="add">Add</button>
                                                 </div>
@@ -435,39 +521,53 @@
                                             <th>Name</th>
                                             <th>UserName</th>
                                             <th>Password</th>
-                                            <th>Country</th>
-                                            <th>Gender</th>
+                                            <th>Governate</th>
+                                            <th>Work-Governate1</th>
                                             <th>Phone</th>
+                                            <th>State</th>
+                                            <th>Rate</th>
                                             <th>Facebook-Link</th>
                                             <th>Instagram-Link</th>
-                                            <th>Bio</th>
+                                            <th>LinkedIn-Link</th>
+                                            <th>Language</th>
+                                            <th>Gender</th>
                                             <th>image</th>
                                             <th>Action</F-th>
                                         </tr>
                                     </thead>
-                                    {{#each tourists}}
+                                    {{#each tourguides}}
                                     <tr role="row">
                                         <td style="width: 198.2px;">{{name}}</td>
                                         <td style="width: 169.2px;">{{username}}</td>
                                         <td style="width: 242.2px;">{{password}}</td>
-                                        <td style="width: 229.2px;">{{country}}</td>
-                                        <td style="width: 229.2px;">{{gender}}</td>
+                                        <td style="width: 229.2px;">{{governorate}}</td>
+                                        <td style="width: 229.2px;">{{#each work_governorates}}
+                                            {{this}} <br>
+                                            {{/each}}
+                                        </td>
                                         <td style="width: 229.2px;">{{phone}}</td>
+                                        <td style="width: 229.2px;">{{state}}</td>
+                                        <td style="width: 229.2px;">{{rate}}</td>
                                         <td style="width: 229.2px;">{{facebook_link}}</td>
                                         <td style="width: 229.2px;">{{instagram_link}}</td>
-                                        <td style="width: 229.2px;">{{Bio}}</td>
+                                        <td style="width: 229.2px;">{{linkedin_link}}</td>
+                                        <td style="width: 229.2px;">{{#each languages}}
+                                            {{this}} <br>
+                                            {{/each}}</td>
+                                        <td style="width: 229.2px;">{{gender}}</td>
                                         <td style="width: 229.2px;">{{image}}</td>
                                         <td style="width: 172.2px;">
                                             <button class="edit" data-toggle="modal" data-target="#EditModal{{_id}}"> <i
                                                     class="fas fa-info-circle"></i></button>
 
                                             <button type="reset" class="delete"><a class="delete"
-                                                    href="/Dashboard/Tourist/Delete/{{_id}}">X</a></button>
+                                                    href="/Dashboard/Tourguide/Delete/{{_id}}">X</a></button>
                                         </td>
                                     </tr>
                                     <!-- Edit Modal Start-->
-                                        <div class="modal fade" id="EditModal{{_id}}" role="dialog">
-                                         <form action="/Dashboard/Tourist/Edit" method="post" enctype="multipart/form-data" >
+                                    <div class="modal fade" id="EditModal{{_id}}" role="dialog">
+                                        <form action="/Dashboard/Tourguide/Edit" method="post"
+                                            enctype="multipart/form-data">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -476,34 +576,148 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <div id="formContainer">
-                                                            <input type="checkbox" value="{{_id}}" name="id" checked hidden>
-                                                            <input type="text" name="name" id="nameInput"
-                                                                value="{{name}}"  required>
+                                                            <input type="checkbox" value="{{_id}}" name="id" checked
+                                                                hidden>
+                                                            <input type="text" name="name" placeholder="Enter Name..."
+                                                                value="{{name}}" required>
                                                             <br><br>
-                                                            <input type="text" name="username" id="userInput"
-                                                                value="{{username}}" required>
+
+                                                            <input type="text" name="username" value="{{username}}"
+                                                                placeholder="Enter UserName..." required>
                                                             <br><br>
-                                                            <input id="passInput" name="password"  placeholder="Enter Password...">
+                                                            <input id="passInput" name="password"
+                                                                placeholder="Enter Password...">
                                                             <br><br>
-                                                            <input type="text" name="country" id="countryInput"
-                                                                value="{{country}}" placeholder="Enter Country...">
+                                                            <h1 id="the_Selected_value" hidden>{{governorate}}</h1>
+                                                            <h1 id="the_Selected_id" hidden>{{_id}}</h1>
+                                                            <select type="text" name="governorate" id="combo{{_id}}"
+                                                                placeholder="Add New Language..." required>
+                                                                <option value="Cairo">Cairo</option>
+                                                                <option value="Alexandria">Alexandria</option>
+                                                                <option value="Giza">Giza</option>
+                                                                <option value="Port Said">Port Said</option>
+                                                                <option value="Suez">Suez</option>
+                                                                <option value="Luxor">Luxor</option>
+                                                                <option value="Asyut">Asyut</option>
+                                                                <option value="Ismailia">Ismailia</option>
+                                                                <option value="Gharbia">Gharbia</option>
+                                                                <option value="Dakahlia">Dakahlia</option>
+                                                                <option value="Aswan">Aswan</option>
+                                                                <option value="Sharqia">Sharqia</option>
+                                                                <option value="Beheira">Beheira</option>
+                                                                <option value="Minya">Minya</option>
+                                                                <option value="Faiyum">Faiyum</option>
+                                                                <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                                                                <option value="Beni Suef">Beni Suef</option>
+                                                                <option value="Qena">Qena</option>
+                                                                <option value="Monufia">Monufia</option>
+                                                                <option value="Red Sea">Red Sea</option>
+                                                                <option value="Sohag">Sohag</option>
+                                                                <option value="North Sinai">North Sinai</option>
+                                                                <option value="Matruh">Matruh</option>
+                                                                <option value="Qalyubia">Qalyubia</option>
+                                                                <option value="New Valley">New Valley</option>
+                                                                <option value="South Sinai">South Sinai</option>
+                                                                <option value="Damietta">Damietta</option>
+                                                                <option value="Menoufia">Menoufia</option>
+                                                                <script>
+                                                                ele = document.getElementById("the_Selected_id").innerHTML;
+                                                                document.getElementById("the_Selected_id").remove();
+                                                                ele2 = document.getElementById("the_Selected_value").innerHTML;
+                                                                document.getElementById("the_Selected_value").remove();
+                                                                document.getElementById("combo"+ele).value  = ele2
+                                                            </script>
+                                                            </select>
                                                             <br><br>
-                                                            <input type="text" name="phone" id="phoneInput"
-                                                                value="{{phone}}" placeholder="Enter Phone...">
+                                                            <h4>-------------------------</h4>
+                                                            <h5 style="color: rgb(0, 0, 0);">Work Governorates</h5><br>
+                                                            <div style="background-color: #f3c2c2;">
+                                                                <h6 style="color: rgb(255, 0, 0);">&nbsp;Delete</h6>
+                                                                <input type="checkbox" name="delete_work" value="R"
+                                                                    checked hidden>
+                                                                {{#each work_governorates}}
+                                                                &nbsp;<input type="checkbox" name="delete_work"
+                                                                    value="{{this}}">
+                                                                <label>{{this}}</label>
+                                                                <br>
+                                                                {{/each}}
+                                                            </div>
+                                                            <br>
+                                                            <label style="color: rgb(0, 167, 14);">Add New</label>
+                                                            <select type="text" name="add_work"
+                                                                placeholder="Enter Goverate..." required>
+                                                                <option value="None">None</option>
+                                                                {{#each The_Governorates}}
+                                                                <option value="{{this}}">{{this}}</option>
+                                                                {{/each}}
+                                                            </select>
                                                             <br><br>
-                                                            <input type="text" name="facebook_link" id="faceInput"
+                                                            <h4>-------------------------</h4>
+                                                            <h5 style="color: rgb(0, 0, 0);">Languages</h5><br>
+                                                            <div style="background-color: #f3c2c2;">
+                                                                <h6 style="color: rgb(255, 0, 0);">&nbsp; Delete</h6>
+                                                                <input type="checkbox" name="delete_languages" value="R"
+                                                                    checked hidden>
+                                                                {{#each languages}}
+                                                                &nbsp;<input type="checkbox" name="delete_languages"
+                                                                    value="{{this}}">
+                                                                <label for="">{{this}}</label>
+                                                                <br>
+                                                                {{/each}}
+                                                            </div>
+                                                            <br>
+                                                            <label for="" style="color: rgb(0, 167, 14);">Add
+                                                                New</label>
+                                                            <select type="text" name="Add_languages"
+                                                                placeholder="Add New Language..." required>
+                                                                <option value="None">None</option>
+                                                                <option value="English">English</option>
+                                                                <option value="Mandarin Chinese">Mandarin Chinese
+                                                                </option>
+                                                                <option value="Spanish">Spanish</option>
+                                                                <option value="Hindi">Hindi</option>
+                                                                <option value="French">French</option>
+                                                                <option value="Portuguese">Portuguese</option>
+                                                                <option value="Russian">Russian</option>
+                                                                <option value="Japanese">Japanese</option>
+                                                                <option value="German">German</option>
+                                                                <option value="Javanese">Javanese</option>
+                                                                <option value="Wu Chinese">Wu Chinese</option>
+                                                                <option value="Vietnamese">Vietnamese</option>
+                                                                <option value="Korean">Korean</option>
+                                                                <option value="Turkish">Turkish</option>
+                                                                <option value="Italian">Italian</option>
+                                                                <option value="Polish">Polish</option>
+                                                                <option value="Ukrainian">Ukrainian</option>
+                                                                <option value="Romanian">Romanian</option>
+                                                                <option value="Dutch">Dutch</option>
+                                                                <option value="Greek">Greek</option>
+                                                                <option value="Hungarian">Hungarian</option>
+                                                                <option value="Swedish">Swedish</option>
+                                                                <option value="Czech">Czech</option>
+                                                            </select>
+                                                            <br><br>
+                                                            <h4>-------------------------</h4>
+                                                            <input type="text" name="phone" placeholder="Enter Phone..."
+                                                                value="{{phone}}">
+                                                            <br><br>
+
+
+                                                            <input type="text" name="facebook_link"
                                                                 value="{{facebook_link}}"
-                                                                placeholder="Enter Facebook link...">
+                                                                placeholder="Enter Faceook-Lik...">
                                                             <br><br>
-                                                            <input type="text" name="instagram_link" id="instaInput"
+                                                            <input type="text" name="instagram_link"
                                                                 value="{{instagram_link}}"
-                                                                placeholder="Enter Instagram link...">
+                                                                placeholder="Enter Faceook-Lik...">
                                                             <br><br>
-                                                            <input type="text" name="Bio" id="bioInput" value="{{Bio}}"
-                                                                placeholder="Enter Bio...">
+                                                            <input type="text" name="linkedin_link"
+                                                                value="{{linkedin_link}}"
+                                                                placeholder="Enter Faceook-Lik...">
                                                             <br><br>
-                                                            <input type="file" name="Tourist_image" id="imageInput"
-                                                                accept="image/*" placeholder="{{image}}">
+
+
+                                                            <input type="file" name="Tourguide_image" accept="image/*">
                                                             <br><br>
                                                             <button type="submit" class="add">Edit</button>
                                                         </div>
@@ -516,8 +730,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                         </form>
-                                     </div>
+                                        </form>
+                                    </div>
                                     <!-- Edit Modal End -->
                                     {{/each}}
 
@@ -583,8 +797,6 @@
     <script src="/Dashboard/js/demo/datatables-demo.js"></script>
 
 
-
-    <!-- add and delete rows -->
 </body>
 
 </html>

@@ -9,11 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Companies-table</title>
+    <title>Music-table</title>
     <link rel="shortcut icon" type="image/x-icon"
         href="/Dashboard/img/kisspng-egyptian-pyramids-computer-icons-egyptian-money-5adf8f90eab4a0.2796726215246007209614.png">
     <!-- Custom fonts for this template -->
-    <link href="/Dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -49,23 +49,20 @@
         }
     </style>
 </head>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul  class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
-
+                    
                 </div>
-                <div class="sidebar-brand-text mx-3"><img
-                        style="height: 190px; margin-top: 190px; margin-bottom: 195px; "
-                        src="/Dashboard/img/Untitled-1.png" alt=""></div>
+                <div class="sidebar-brand-text mx-3"><img  style="height: 190px; margin-top: 190px; margin-bottom: 195px; " src="/Dashboard/img/Untitled-1.png" alt=""></div>
             </a>
 
             <!-- Divider -->
@@ -78,7 +75,7 @@
                     <span>Dashboard</span></a>
             </li>
 
-
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -330,18 +327,14 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
-
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Company</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Music</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -349,7 +342,7 @@
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                 data-target="#myModal">Add New Row</button>
                             <!-- Add Modal Start-->
-                            <form action="/Dashboard/Company/Add" method="post" enctype="multipart/form-data">
+                            <form action="/Dashboard/Music/Add" method="post" enctype="multipart/form-data">
                                 <div class="modal fade" id="myModal" role="dialog">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
@@ -360,22 +353,73 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div id="formContainer">
-
-
-                                                    <input type="text" name="name" placeholder="Enter Company-Name..."
-                                                        required>
+                                                    <input type="text" name="name" 
+                                                        placeholder="Enter Singer-Name..." required>
                                                     <br><br>
-
-                                                    <input type="text" name="description"
+                                                    <input type="text" name="description" 
                                                         placeholder="Enter Description..." required>
                                                     <br><br>
-
-                                                    <input type="text" name="link" placeholder="Enter Link..." required>
+                                                    <label for="">Singer-Image</label>
+                                                    <input type="file" name="image" 
+                                                    placeholder="Enter Image..." required>
+                                                <br><br>
+                                                <input type="text" name="Facebook_link" 
+                                                placeholder="Enter Facebook-Link..." >
+                                            <br><br>
+                                                   
+                                                    <input type="text" name="Instagram_link" 
+                                                        placeholder="Enter Instagram-Link..." >
                                                     <br><br>
-                                                    <input type="file" name="Company_image" placeholder="Enter Image..."
-                                                        required>
-                                                    <br><br>
-
+                                                    <input type="text" name="twitter_link" 
+                                                    placeholder="Enter Twitter-Link..." >
+                                                <br><br>
+                                                <input type="text" name="Google_link" 
+                                                placeholder="Enter Google-Link..." required>
+                                            <br><br>
+                                            <input type="text" name="Wikipedia_link" 
+                                            placeholder="Enter Wikipedia-Link..." required>
+                                        <br><br>
+                                        <input type="text" name="song_1_Name" 
+                                        placeholder="Enter Song1-Name ..." required>
+                                    <br><br>
+                                    <input type="text" name="song_1_Released" 
+                                    placeholder="Enter Song1-Release ..." required>
+                                <br><br>
+                                <input type="text" name="song_1_Album" 
+                                    placeholder="Enter Song1-Album ..." required >
+                                <br><br>
+                                <input type="text" name="song_1_Album_link" 
+                                placeholder="Enter Song1-Album-Link ..." >
+                            <br><br>
+                            <label for="">Song1-Image</label>
+                            <input type="file" name="song_1_Image" 
+                            placeholder="Enter Song1-Image ..." required >
+                        <br><br>
+                        <label for="">Song 1</label>
+                        <input type="file" name="song_1" 
+                        placeholder="Enter Song1 ..." required>
+                    <br><br>
+                    
+                    <input type="text" name="song_2_Name" 
+                    placeholder="Enter Song2-Name ..." required>
+                <br><br>
+                <input type="text" name="song_2_Released" 
+                placeholder="Enter Song2-Release ..." required>
+            <br><br>
+            <input type="text" name="song_2_Album" 
+                placeholder="Enter Song2-Album ..." required >
+            <br><br>
+            <input type="text" name="song_2_Album_link" 
+            placeholder="Enter Song2-Album-Link ..." >
+        <br><br>
+        <label for="">Song2-Image</label>
+        <input type="file" name="song_2_Image" 
+        placeholder="Enter Song2-Image ..." required>
+    <br><br>
+    <label for="">Song2</label>
+    <input type="file" name="song_2" 
+    placeholder="Enter Song2 ..."  required>
+<br><br>           
                                                     <button type="submit" class="add">Add</button>
                                                 </div>
 
@@ -397,75 +441,154 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Company-Name</th>
+                                            <th>Singer-Name</th>
                                             <th>Description</th>
-                                            <th>Image</th>
-                                            <th>Link</th>
-
-
+                                            <th>Singer-Image</th>
+                                            <th>Facebook-Link</th>
+                                            <th>Instagram-Link</th>
+                                            <th>Twitter-Link</th>
+                                            <th>Google-Link</th>
+                                            <th>Wikipedia-Link</th>
+                                            <th>Song1-Name</th>
+                                            <th>Song1-Released</th>
+                                            <th>Song1-Album</th>
+                                            <th>Song1-Album-Link</th>
+                                            <th>Song1-Image</th>
+                                            <th>Song1</th>
+                                            <th>Song2-Name</th>
+                                            <th>Song2-Released</th>
+                                            <th>Song2-Album</th>
+                                            <th>Song2-Album-Link</th>
+                                            <th>Song2-Image</th>
+                                            <th>Song2</th>
+                                            
+                                           
+                                           
                                             <th>Action</F-th>
                                         </tr>
                                     </thead>
-                                    {{#each companies}}
+                                    {{#each musics}}
                                     <tr role="row">
                                         <td style="width: 198.2px;">{{name}}</td>
                                         <td style="width: 198.2px;">{{description}}</td>
-                                        <td style="width: 169.2px;">{{link}}</th>
                                         <td style="width: 169.2px;">{{image}}</th>
-
-
-
+                                        <td style="width: 172.2px;">{{Facebook_link}}</td>
+                                        <td style="width: 172.2px;">{{Instagram_link}}</td>
+                                        <td style="width: 169.2px;">{{twitter_link}}</td>
+                                        <td style="width: 229.2px;">{{Google_link}}</td>
+                                        <td style="width: 172.2px;">{{Wikipedia_link}}</td>
+                                        <td style="width: 169.2px;">{{song_1_Name}}</td>
+                                        <td style="width: 172.2px;">{{song_1_Released}}</td>
+                                        <td style="width: 169.2px;">{{song_1_Album}}</td>
+                                        <td style="width: 169.2px;">{{song_1_Album_link}}</td>
+                                        <td style="width: 169.2px;">{{song_1_Image}}</td>
+                                        <td style="width: 169.2px;">{{song_1}}</td>
+                                        <td style="width: 169.2px;">{{song_2_Name}}</td>
+                                        <td style="width: 172.2px;">{{song_2_Released}}</td>
+                                        <td style="width: 169.2px;">{{song_2_Album}}</td>
+                                        <td style="width: 169.2px;">{{song_2_Album_link}}</td>
+                                        <td style="width: 169.2px;">{{song_2_Image}}</td>
+                                        <td style="width: 169.2px;">{{song_2}}</td>
+                                        
+                                       
+                                       
                                         <td style="width: 172.2px;">
                                             <button class="edit" data-toggle="modal" data-target="#EditModal{{_id}}"> <i
                                                     class="fas fa-info-circle"></i></button>
-
+                                           
                                             <button type="reset" class="delete"><a class="delete"
-                                                    href="/Dashboard/Company/Delete/{{_id}}">X</a></button>
+                                                    href="/Dashboard/Music/Delete/{{_id}}">X</a></button>
                                         </td>
                                     </tr>
-                                    <!-- Edit Modal Start-->
-                                    <div class="modal fade" id="EditModal{{_id}}" role="dialog">
-                                        <form action="/Dashboard/Company/Edit" method="post"
-                                            enctype="multipart/form-data">
-                                            <div class="modal-dialog modal-sm">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close"
-                                                            data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div id="formContainer">
+                                       <!-- Edit Modal Start-->
+                                       <div class="modal fade" id="EditModal{{_id}}" role="dialog">
+                                        <form action="/Dashboard/Music/Edit" method="post" enctype="multipart/form-data" >
+                                           <div class="modal-dialog modal-sm">
+                                               <div class="modal-content">
+                                                   <div class="modal-header">
+                                                       <button type="button" class="close"
+                                                           data-dismiss="modal">&times;</button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                       <div id="formContainer">
+                                                        <input type="checkbox" value="{{_id}}" name="id" checked hidden>                                             
+                                                        <input type="text" name="name" value="{{name}}"
+                                                        placeholder="Enter Singer-Name..." required>
+                                                    <br><br>
+
+                                                    <input type="text" name="description" value="{{description}}"
+                                                        placeholder="Enter Description..." required>
+                                                    <br><br>
+                                                    <input type="file" name="image" 
+                                                    placeholder="Enter Image..." >
+                                                <br><br>
+                                                <input type="text" name="Facebook_link" value="{{Facebook_link}}"
+                                                placeholder="Enter Facebook-Link..." >
+                                            <br><br>
+                                                   
+                                                    <input type="text" name="Instagram_link" value="{{Instagram_link}}"
+                                                        placeholder="Enter Instagram-Link..." >
+                                                    <br><br>
+                                                    <input type="text" name="twitter_link" value="{{twitter_link}}"
+                                                    placeholder="Enter Twitter-Link..." >
+                                                <br><br>
+                                                <input type="text" name="Google_link" value="{{Google_link}}"
+                                                placeholder="Enter Google-Link..." required>
+                                            <br><br>
+                                            <input type="text" name="Wikipedia_link" value="{{Wikipedia_link}}"
+                                            placeholder="Enter Wikipedia-Link..." required>
+                                        <br><br>
+                                        <input type="text" name="song_1_Name" value="{{song_1_Name}}"
+                                        placeholder="Enter Song1-Name ..." required>
+                                    <br><br>
+                                    <input type="text" name="song_1_Released" value="{{song_1_Released}}"
+                                    placeholder="Enter Song1-Release ..." required>
+                                <br><br>
+                                <input type="text" name="song_1_Album" value="{{song_1_Album}}"
+                                    placeholder="Enter Song1-Album ..." required >
+                                <br><br>
+                                <input type="text" name="song_1_Album_link" value="{{song_1_Album_link}}"
+                                placeholder="Enter Song1-Album-Link ..." >
+                            <br><br>
+                            <input type="file" name="song_1_Image" 
+                            placeholder="Enter Song1-Image ..."  >
+                        <br><br>
+                        <input type="file" name="song_1" 
+                        placeholder="Enter Song1 ..." >
+                    <br><br>
+                    
+                    <input type="text" name="song_2_Name" value="{{song_2_Name}}"
+                    placeholder="Enter Song2-Name ..." required>
+                <br><br>
+                <input type="text" name="song_2_Released" value="{{song_2_Released}}"
+                placeholder="Enter Song2-Release ..." required>
+            <br><br>
+            <input type="text" name="song_2_Album" value="{{song_2_Album}}"
+                placeholder="Enter Song2-Album ..." required >
+            <br><br>
+            <input type="text" name="song_2_Album_link" value="{{song_2_Album_link}}"
+            placeholder="Enter Song2-Album-Link ..." >
+        <br><br>
+        <input type="file" name="song_2_Image"
+        placeholder="Enter Song2-Image ..." >
+    <br><br>
+    <input type="file" name="song_2"
+    placeholder="Enter Song2 ..."  >
+<br><br>           
+                                                           <button type="submit" class="add">Edit</button>
+                                                       </div>
 
 
-                                                            <input type="checkbox" value="{{_id}}" name="id" checked hidden>
-
-                                                            <input type="text" name="name" value="{{name}}" required
-                                                                placeholder="Enter Company-Name...">
-                                                            <br><br>
-                                                            <input type="text" name="description" value="{{description}}"required
-                                                                placeholder="Enter Description...">
-                                                            <br><br>
-                                                            <input type="text" name="link" value="{{link}}" placeholder="Enter Link..."required>
-                                                            <br><br>
-                                                            <input type="file" name="Company_image" 
-                                                                placeholder="Enter Image...">
-                                                            <br><br>
-
-
-                                                            <button type="submit" class="add">Edit</button>
-                                                        </div>
-
-
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default"
-                                                            data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                   </div>
+                                                   <div class="modal-footer">
+                                                       <button type="button" class="btn btn-default"
+                                                           data-dismiss="modal">Close</button>
+                                                   </div>
+                                               </div>
+                                           </div>
                                         </form>
                                     </div>
-                                    <!-- Edit Modal End -->
+                                   <!-- Edit Modal End -->
                                     {{/each}}
 
                                 </table>

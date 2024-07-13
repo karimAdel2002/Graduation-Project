@@ -1,249 +1,281 @@
 <!DOCTYPE html>
 <!-- Website - www.codingnepalweb.com -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content=" login" />
-    <meta name="keywords"content=" signup"/>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content=" login" />
+  <meta name="keywords" content=" signup" />
 
-    <title>Login & Signup </title>
-    <link href='https://fonts.googleapis.com/css?family=Jua' rel='stylesheet'>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/themify-icons.css">
-    <link rel="stylesheet" href="/css/nice-select.css">
-    <link rel="stylesheet" href="/css/flaticon.css">
-    <link rel="stylesheet" href="/css/gijgo.css">
-    <link rel="stylesheet" href="/css/animate.css">
-    <link rel="stylesheet" href="/css/slick.css">
-    <link rel="stylesheet" href="/css/slicknav.css">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="/css/final_login.css" />
-    <script src="/js/final_login.js" defer></script>
-  </head>
-  <body>
-    
-    <section class="wrapper">
-      <div class="form signup">
-       
-        <form action="/sign_in/register" method="post" enctype="multipart/form-data">
-          <!-- Radio Buttons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        
-          <div class ="row">
-            <div class="col-md-6 mx-auto p-0">
-              <div class="card">
-          <div class="login-box">
-            <div class="login-snip">
-              <header >Signup</header>
-              <input id="tab-1" type="radio" name="choice" value="Tourist" class="sign-in" checked><label for="tab-1" class="tab">Tourist</label>
-              <input id="tab-2" type="radio" name="choice" value="Tourguide" class="sign-up" ><label for="tab-2" class="tab">Tourguide</label>
-              <div class="login-space">
+  <title>Login & Signup </title>
+  <link href='https://fonts.googleapis.com/css?family=Jua' rel='stylesheet'>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/themify-icons.css">
+  <link rel="stylesheet" href="/css/nice-select.css">
+  <link rel="stylesheet" href="/css/flaticon.css">
+  <link rel="stylesheet" href="/css/gijgo.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/slick.css">
+  <link rel="stylesheet" href="/css/slicknav.css">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="/css/final_login.css" />
+  <script src="/js/final_login.js" defer></script>
+</head>
 
+     
+<body>
+  <section class="wrapper">
+    <div class="form signup">
+      <form action="/sign_in/register" method="post" enctype="multipart/form-data">
+        <!-- Radio Buttons -->
+        <div class="row">
+          <div class="col-md-6 mx-auto p-0">
+            <div class="card">
+              <div class="login-box">
+                <div class="login-snip">
+                  <header>Signup</header>
+                  <input id="tab-1" type="radio" name="choice" value="Tourist" class="sign-in" checked><label
+                    for="tab-1" class="tab">Tourist</label>
+                  <input id="tab-2" type="radio" name="choice" value="Tourguide" class="sign-up"><label for="tab-2"
+                    class="tab">Tourguide</label>
+                  <div class="login-space">
+                    <!-- //Tourist -->
+                    <form action="/sign_in/register" method="post">
+                      <div class="login">
+                        <div class="group">
+                          <label for="user" class="label">Username</label>
+                          <input name="username" id="user" type="text" class="input" placeholder="Enter your username"
+                            required>
+                        </div>
+                        <div class="group">
+                          <label for="user" class="label">Full Name</label>
+                          <input name="name" id="user" type="text" class="input" placeholder="Enter your Full Name"
+                            required>
+                        </div>
+                        <div class="group">
+                          <label for="pass" class="label">Password</label>
+                          <input name="password" id="pass" type="password" class="input" data-type="password"
+                            placeholder="Enter your password" required>
+                        </div>
+                        <div class="group">
+                          <label for="Country" class="label" placeholder="Country">Country</label>
+                          <select name="country" id="Country"></select>
+                        </div>
+                        <div class="group">
+                          <input id="check" type="checkbox" class="check" checked>
+                          <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div style="margin-top: -10px;"
+                          class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                          <h6 style="color: #7e7e7e;" class="mb-0 me-4">Gender:&nbsp; &nbsp; </h6>
+                          <div class="form-check form-check-inline mb-0 me-4">
+                            <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="female"
+                              checked />
+                            <br> <label class="form-check-label" for="femaleGender">Female</label>
+                          </div>
+                          <div class="form-check form-check-inline mb-0 me-4">
+                            <input class="form-check-input" type="radio" name="gender" id="maleGender" value="male" />
+                            <label class="form-check-label" for="maleGender">Male</label>
+                          </div>
+                        </div>
+                        <div class="group">
+                          <input style="margin-top: -3%;" type="submit" class="button" value="Sign Up">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="hr"></div>
+                        <div class="hr"></div>
+                        <div class="hr"></div>
+                        <div class="hr"></div>
+                      </div>
+                    </form>
 
-                <!-- //Tourist -->
-                <form action="/sign_in/register" method="post" >
-                <div class="login">
-                  <div class="group">
-                    <label for="user" class="label">Username</label>
-                    <input name="username" id="user" type="text" class="input"  placeholder="Enter your username">
+                    <!-- //Tour Guide -->
+                    <form action="/sign_in/register" method="post" enctype="multipart/form-data">
+                      <div style="margin-top: -3%;" class="sign-up-form">
+                        <div class="group">
+                          <label for="user" class="label">Full Name</label>
+                          <input name="name" id="user" type="text" class="input" placeholder="Create your Name"
+                            required>
+                        </div>
+                        <div class="group">
+                          <label for="mail" class="label">Email Address</label>
+                          <input name="username" id="mail" type="mail" class="input"
+                            placeholder="Enter your email address" required>
+                        </div>
+                        <div class="group">
+                          <label for="pass" class="label">Password</label>
+                          <input name="password" id="pass" type="password" class="input" data-type="password"
+                            placeholder="Create your password" required>
+                        </div>
+                        
+                        <div class="group">
+                          <label for="file" class="label" required> Your 'CV, National ID, Tour Guide ID' In One Folder
+                          </label>
+                          <input name="Tourguide_papers" id="file" type="file" class="input"
+                            placeholder="Enter your email address" required>
+                        </div>
+                        <div class="group">
+                          <label for="city" class="label">Governorate</label>
+                          <select  name="governorate" placeholder="Add New Language..." required>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Alexandria">Alexandria</option>
+                            <option value="Giza">Giza</option>
+                            <option value="Port Said">Port Said</option>
+                            <option value="Suez">Suez</option>
+                            <option value="Luxor">Luxor</option>
+                            <option value="Asyut">Asyut</option>
+                            <option value="Ismailia">Ismailia</option>
+                            <option value="Gharbia">Gharbia</option>
+                            <option value="Dakahlia">Dakahlia</option>
+                            <option value="Aswan">Aswan</option>
+                            <option value="Sharqia">Sharqia</option>
+                            <option value="Beheira">Beheira</option>
+                            <option value="Minya">Minya</option>
+                            <option value="Faiyum">Faiyum</option>
+                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                            <option value="Beni Suef">Beni Suef</option>
+                            <option value="Qena">Qena</option>
+                            <option value="Monufia">Monufia</option>
+                            <option value="Red Sea">Red Sea</option>
+                            <option value="Sohag">Sohag</option>
+                            <option value="North Sinai">North Sinai</option>
+                            <option value="Matruh">Matruh</option>
+                            <option value="Qalyubia">Qalyubia</option>
+                            <option value="New Valley">New Valley</option>
+                            <option value="South Sinai">South Sinai</option>
+                            <option value="Damietta">Damietta</option>
+                            <option value="Menoufia">Menoufia</option>
+                          </select>
+                        </div>
+                        <div style="margin-top: -24px;"
+                          class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                          <h6 style="color: #7e7e7e;" class="mb-0 me-4">Gender:&nbsp; &nbsp; </h6>
+
+                          <div class="form-check form-check-inline mb-0 me-4">
+                            <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="female"
+                              checked />
+                            <br> <label class="form-check-label" for="femaleGender">Female</label>
+                          </div>
+
+                          <div class="form-check form-check-inline mb-0 me-4">
+                            <input class="form-check-input" type="radio" name="gender" id="maleGender" value="male" />
+                            <label class="form-check-label" for="maleGender">Male</label>
+                          </div>
+                        </div>
+                        <div class="group">
+                          <input style="margin-top: -9%;" type="submit" class="button" value="Sign Up">
+                        </div>
+                        <div class="hr"></div>
+
+                      </div>
+                    </form>
                   </div>
-                  <div class="group">
-                    <label  for="user" class="label">Full Name</label>
-                    <input name="name" id="user" type="text" class="input"  placeholder="Enter your Full Name">
-                  </div>
-                  <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input name="password" id="pass" type="password" class="input" data-type="password" placeholder="Enter your password">
-                  </div>
-                  <div class="group">
-                    <label for="Country" class="label" placeholder="Country">Country</label>
-                  <select name="country" id="Country"></select>
                 </div>
-                  <div class="group">
-                    <input  id="check" type="checkbox" class="check" checked>
-                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                  </div>
-                  <div style="margin-top: -10px;"  class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-  
-                    <h6 style="color: #7e7e7e;" class="mb-0 me-4">Gender:&nbsp; &nbsp; </h6> 
-         
-                     <div class="form-check form-check-inline mb-0 me-4">
-                       <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                         value="female" checked/>
-                      <br> <label class="form-check-label" for="femaleGender" >Female</label>
-                     </div>
-         
-                     <div class="form-check form-check-inline mb-0 me-4">
-                       <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                         value="male" />
-                       <label class="form-check-label" for="maleGender">Male</label> 
-
-                     </div>
-                   </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Sign Up">
-                  </div>
-                  <div class="hr"></div>
-                </div>
-                </form>
-                <!-- //Tour Guide -->
-                <form action="/sign_in/register" method="post" enctype="multipart/form-data">
-                <div class="sign-up-form">
-                  <div class="group">
-                    <label  for="user" class="label">Full Name</label>
-                    <input name="name" id="user" type="text" class="input" placeholder="Create your Name" required>
-                  </div>
-                  <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input name="password" id="pass" type="password" class="input" data-type="password" placeholder="Create your password" required>
-                  </div>
-                  
-                  
-                  <div class="group">
-                    <label for="mail" class="label">Email Address</label>
-                    <input name="username" id="mail" type="mail" class="input" placeholder="Enter your email address">
-                  </div>
-                  <div class="group">
-                    <label for="file" class="label"> Your 'CV, National ID, Tour Guide ID' In One Folder </label>
-                    <input name="Tourguide_papers" id="file" type="file" class="input" placeholder="Enter your email address" required>
-                  </div>
-                  <div class="group">
-                    <label for="city" class="label">City</label>
-                  <select name="governorate" id="city"></select>
-                  </div>
-                  <div style="margin-top: -24px;"  class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-  
-                    <h6 style="color: #7e7e7e;" class="mb-0 me-4">Gender:&nbsp; &nbsp; </h6> 
-         
-                     <div class="form-check form-check-inline mb-0 me-4">
-                       <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                         value="female" checked />
-                      <br> <label class="form-check-label" for="femaleGender">Female</label>
-                     </div>
-         
-                     <div class="form-check form-check-inline mb-0 me-4">
-                       <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                         value="male" />
-                       <label class="form-check-label" for="maleGender">Male</label>
-                     </div>
-                   </div>
-                  <div class="group">
-                    <input style="margin-top: -7%;" type="submit" class="button" value="Sign Up">
-                  </div>
-                  <div class="hr"></div>
-                  
-                </div>
-                </form>
               </div>
             </div>
-          </div>   
           </div>
+        </div>
+
+
+        <!-- top button -->
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+      </form>
+    </div>
+
+    <div class="form login">
+      <header>Login</header>
+      <form action="/sign_in/check" method="post">
+
+        <input name="username" style="margin-top: 10%;" type="text" placeholder="Email address" required />
+        <input name="password" type="password" placeholder="Password" required />
+
+
+        <a href="#">Forgot password?</a>
+        <input type="submit" value="Login" />
+        <div class="row">
+          <div class="col-md-12">
+            <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="/sign_in/google"><img
+                src="https://img.icons8.com/color/16/000000/google-logo.png"> Signin With Google</a>
+
           </div>
-          </div>
-          
-    
-        
-           
-         
-          <!-- top button -->
-          <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
 
-      <div class="form login">
-        <header>Login</header>
-        <form action="/sign_in/check" method="post">
-          
-          <input name="username" style="margin-top: 10%;" type="text" placeholder="Email address" required />
-          <input name="password" type="password" placeholder="Password" required />
+    <script>
+      const wrapper = document.querySelector(".wrapper"),
+        signupHeader = document.querySelector(".signup header"),
+        loginHeader = document.querySelector(".login header");
 
-          
-          <a href="#">Forgot password?</a>
-          <input  type="submit" value="Login" />
-           <div class="row">
-            <div class="col-md-12">
-              <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="/sign_in/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Signin With Google</a>
+      loginHeader.addEventListener("click", () => {
+        wrapper.classList.add("active");
+      });
+      signupHeader.addEventListener("click", () => {
+        wrapper.classList.remove("active");
+      });
+      //  div with id=tourgiude_inputs will apear in tourduide section only
+      function show() {
+        var x = document.getElementById("tourgiude_inputs");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+        var y = document.getElementById("tourist_inputs");
+        if (y.style.display === "block") {
+          y.style.display = "none";
+        } else {
+          y.style.display = "block";
+        }
+      }
 
-              </div>
-            </div>
-        </form>
-      </div>
+      function hide() {
+        var x = document.getElementById("tourgiude_inputs");
 
-      <script>
-        const wrapper = document.querySelector(".wrapper"),
-          signupHeader = document.querySelector(".signup header"),
-          loginHeader = document.querySelector(".login header");
-
-        loginHeader.addEventListener("click", () => {
-          wrapper.classList.add("active");
-        });
-        signupHeader.addEventListener("click", () => {
-          wrapper.classList.remove("active");
-        });
-//  div with id=tourgiude_inputs will apear in tourduide section only
-        function show() {
-          var x = document.getElementById("tourgiude_inputs");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-          var y = document.getElementById("tourist_inputs");
-          if (y.style.display === "block") {
-            y.style.display = "none";
-          } else {
-            y.style.display = "block";
-          }
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+        var y = document.getElementById("tourist_inputs");
+        if (y.style.display === "none") {
+          y.style.display = "block";
+        } else {
+          y.style.display = "none";
         }
 
-        function hide() {
-          var x = document.getElementById("tourgiude_inputs");
-         
-          if (x.style.display === "block") {
-            x.style.display = "none";
-          } else {
-            x.style.display = "block";
-          }
-          var y = document.getElementById("tourist_inputs");
-          if (y.style.display === "none") {
-            y.style.display = "block";
-          } else {
-            y.style.display = "none";
-          }
-          
-        }
+      }
 
-      
-        
-       
-      </script>
-      <!-- top button -->
-      <script>
-        // Get the button
-        let mybutton = document.getElementById("myBtn");
-        
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-        
-        function scrollFunction() {
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-          } else {
-            mybutton.style.display = "none";
-          }
+    </script>
+    <!-- top button -->
+    <script>
+      // Get the button
+      let mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () { scrollFunction() };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
         }
-        
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
-        }
-        </script>
-    </section>
-  </body>
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <br><br>
+  </section>
+</body>
 </html>
