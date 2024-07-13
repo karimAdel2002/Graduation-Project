@@ -20,9 +20,9 @@ export const index = async (req, res) => {
     let Governorates_sec1 = the_governorates.slice(0,sec1_length)
     let Governorates_sec2 = the_governorates.slice(sec1_length,the_governorates.length)
     
-    // await governorates.findByIdAndUpdate("65bbec3bc5c6d24cb7f8087f", { $set: { Tourguides : ["65ca460e4f93c89536f35ef3","65785900c0b6e4eed63f91ed","65cb6e5b6bf8779fe9773fa9"] } })
-    // await governorates.findByIdAndUpdate("65bbec3bc5c6d24cb7f80881", { $set: { Tourguides : ["65cb6e5b6bf8779fe9773fa9"] } })
-    // await governorates.findByIdAndUpdate("65bbec3bc5c6d24cb7f80883", { $set: { Tourguides : [] } })
+    // await governorates.findByIdAndUpdate("65bbec3bc5c6d24cb7f8087f", { $set: { Tourguides : ["65d14c54f4e498493983ac55","65d14e0ff4e498493983aca2","65cb6e5b6bf8779fe9773fa9"] } })
+    // await governorates.findByIdAndUpdate("65bbec3bc5c6d24cb7f80881", { $set: { Tourguides : ["65d14c54f4e498493983ac55","65d14e0ff4e498493983aca2"] } })
+    // await governorates.findByIdAndUpdate("65bbec3bc5c6d24cb7f80883", { $set: { Tourguides : ["65d14c54f4e498493983ac55"] } })
     res.render('Tourguides/index',{the_governorates, Governorates_sec1, Governorates_sec2 ,all_Comments})
 };
 

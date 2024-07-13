@@ -10,13 +10,43 @@ import Embassies from "../DB Models/Embassies.js"
 import Foods from "../DB Models/Food.js"
 import Musics from "../DB Models/Music.js"
 import Bills from "../DB Models/Bills.js"
+import Contacts from "../DB Models/Contact.js"
 
 
 import bcrypt from 'bcryptjs'
 import notifier from 'node-notifier'
+let contact_Messages = [];
+let contact_Messages_Number = 0;
+let Activation_number = 0;
+let Bills_number = 0;
+let tourguides_contact_number =0;
 
 
+ const get_contact_Messages = async () => {
+     contact_Messages = await Contacts.find({reply:"None"}).lean();
+    for(let i = 0 ; i <4 ; i++){
+        const contact_Messages_tourist = await Tourists.findOne({_id :contact_Messages[i].user_id }).lean();
+        const contact_Messages_tourguide = await Tourguides.findOne({_id :contact_Messages[i].user_id }).lean();
 
+        if(contact_Messages[i].type == "Tourist" && contact_Messages_tourist !== null){
+            contact_Messages[i].name = contact_Messages_tourist.name
+            contact_Messages[i].username = contact_Messages_tourist.username
+            contact_Messages[i].image = contact_Messages_tourist.image
+        }
+        if(contact_Messages[i].type == "Tourguide" && contact_Messages_tourguide !== null){
+            contact_Messages[i].name = contact_Messages_tourguide.name
+            contact_Messages[i].username = contact_Messages_tourguide.username
+            contact_Messages[i].image = contact_Messages_tourguide.image
+            tourguides_contact_number++;
+        }
+    }
+    contact_Messages_Number = contact_Messages.length;
+    const tourguides = await Tourguides.find({state:"Blocked"}).lean();
+    Activation_number = tourguides.length;
+    const bills = await Bills.find().lean();
+    Bills_number = bills.length;
+    
+};
 import { createRequire } from 'module';            //to creating a require for deletion
 const require = createRequire(import.meta.url);    //to creating a require for deletion
 const fs = require('fs').promises;    // start of deletion
@@ -31,16 +61,24 @@ async function deleteFile(filePath) {
     }
 }
 
-
-
 // --------------------index------------------------
 export const index = async (req, res) => {
-    res.render('Dashboard/index')
+    contact_Messages = [];
+    Activation_number = 0;
+    Bills_number = 0;
+    tourguides_contact_number =0;
+    await get_contact_Messages();
+    res.render('Dashboard/index' ,{contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
+};
+// --------------------index------------------------
+export const show_404 = async (req, res) => {
+    
+    res.render('Dashboard/404')
 };
 // --------------------Admin------------------------
 export const Admin = async (req, res) => {
     const admins = await Admins.find().lean();
-    res.render('Dashboard/Admin', { admins })
+    res.render('Dashboard/Admin', { admins,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number })
 };
 export const Admin_Add = async (req, res) => {
     const { fname, lname, username, password } = req.body;
@@ -116,7 +154,7 @@ export const Admin_Edit = async (req, res) => {
 // --------------------Tourist------------------------
 export const Tourist = async (req, res) => {
     const tourists = await Tourists.find().lean();
-    res.render('Dashboard/Tourist', { tourists })
+    res.render('Dashboard/Tourist', { tourists ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number })
 };
 export const Tourist_Add = async (req, res) => {
     const { name, username, password, country, gender, phone, facebook_link, instagram_link, Bio } = req.body;
@@ -239,7 +277,7 @@ export const Tourist_Edit = async (req, res) => {
 // --------------------Governorate------------------------
 export const Governorate = async (req, res) => {
     const governorates = await Governorates.find().lean();
-    res.render('Dashboard/Governorate', { governorates })
+    res.render('Dashboard/Governorate', { governorates ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
 };
 export const Governorate_Add = async (req, res) => {
     const { name, description, Wikipedia_link, weather_link, video_link, popular } = req.body;
@@ -284,7 +322,7 @@ export const Governorate_Edit = async (req, res) => {
 // --------------------Trip------------------------
 export const Trip = async (req, res) => {
     const trips = await Trips.find().lean();
-    res.render('Dashboard/Trip', { trips })
+    res.render('Dashboard/Trip', { trips ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number })
 };
 export const Trip_Add = async (req, res) => {
     const { name, description, price, rate } = req.body;
@@ -339,8 +377,10 @@ export const Trip_Details = async (req, res) => {
     const trip_Details = await Trip_Detailss.find().populate('trip_id').populate('destination_1').populate('destination_2').populate('destination_3').populate('destination_4').populate('destination_5').populate('destination_6').lean();
     const trips = await Trips.find().lean();
     const places = await Places.find().lean();
-
-    res.render('Dashboard/Trip_Details', { trip_Details, trips, places })
+    trip_Details.forEach((element) => {
+        element.places = places
+    });
+    res.render('Dashboard/Trip_Details', { trip_Details, trips, places ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number })
 };
 export const Trip_Details_Add = async (req, res) => {
     const { trip_id, title, duration, tour_location, tour_availability, Pickup_and_Drop_Off, tour_type, tour_description, lunch_time, tour_itinerary, destination_1, destination_2, destination_3, destination_4, destination_5, destination_6 } = req.body;
@@ -406,25 +446,28 @@ export const Trip_Details_Edit = async (req, res) => {
     await Trip_Detailss.findByIdAndUpdate(id, { $set: { tour_description } })
     await Trip_Detailss.findByIdAndUpdate(id, { $set: { lunch_time } })
     await Trip_Detailss.findByIdAndUpdate(id, { $set: { tour_itinerary } })
-    const the_destination1 = await Places.findOne({ name: destination_1 }).lean();
-    await Trip_Detailss.findByIdAndUpdate(id, { $set: { destination_1: the_destination1._id } })
-    if (destination_2 != "") {
+    if (destination_1 != undefined ) {
+        const the_destination1 = await Places.findOne({ name: destination_1 }).lean();
+        await Trip_Detailss.findByIdAndUpdate(id, { $set: { destination_1: the_destination1._id } })
+    }
+    if (destination_2 != undefined ) {
         const the_destination_2 = await Places.findOne({ name: destination_2 }).lean();
         await Trip_Detailss.findByIdAndUpdate(id, { $set: { destination_2: the_destination_2._id } })
     }
-    if (destination_3 != "") {
+    if (destination_3 != undefined ) {
+        console.log(destination_3)
         const the_destination_3 = await Places.findOne({ name: destination_3 }).lean();
         await Trip_Detailss.findByIdAndUpdate(id, { $set: { destination_3: the_destination_3._id } })
     }
-    if (destination_4 != "") {
+    if (destination_4 != undefined ) {
         const the_destination_4 = await Places.findOne({ name: destination_4 }).lean();
         await Trip_Detailss.findByIdAndUpdate(id, { $set: { destination_4: the_destination_4._id } })
     }
-    if (destination_5 != "") {
+    if (destination_5 != undefined ) {
         const the_destination_5 = await Places.findOne({ name: destination_5 }).lean();
         await Trip_Detailss.findByIdAndUpdate(id, { $set: { destination_5: the_destination_5._id } })
     }
-    if (destination_6 != "") {
+    if (destination_6 != undefined ) {
         const the_destination_6 = await Places.findOne({ name: destination_6 }).lean();
         await Trip_Detailss.findByIdAndUpdate(id, { $set: { destination_6: the_destination_6._id } })
     }
@@ -434,7 +477,7 @@ export const Trip_Details_Edit = async (req, res) => {
 // --------------------Company------------------------
 export const Company = async (req, res) => {
     const companies = await Companies.find().lean();
-    res.render('Dashboard/Company', { companies })
+    res.render('Dashboard/Company', { companies ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
 };
 export const Company_Add = async (req, res) => {
     const { name, description, link } = req.body;
@@ -473,7 +516,7 @@ export const Company_Edit = async (req, res) => {
 // --------------------Embassy------------------------
 export const Embassy = async (req, res) => {
     const embassies = await Embassies.find().lean();
-    res.render('Dashboard/Embassy', { embassies })
+    res.render('Dashboard/Embassy', { embassies ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
 };
 export const Embassy_Add = async (req, res) => {
     const { name, address, telephone, email, office_Hours } = req.body;
@@ -516,7 +559,7 @@ export const Embassy_Edit = async (req, res) => {
 // --------------------Food------------------------
 export const Food = async (req, res) => {
     const foods = await Foods.find().lean();
-    res.render('Dashboard/Food', { foods })
+    res.render('Dashboard/Food', { foods ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
 };
 export const Food_Add = async (req, res) => {
     const { name, description } = req.body;
@@ -561,12 +604,11 @@ export const Place = async (req, res) => {
     places.forEach((element) => {
         element.The_Governorates = arr
     });
-    res.render('Dashboard/Place', { places, governorates })
+    res.render('Dashboard/Place', { places, governorates ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
 };
 export const Place_Add = async (req, res) => {
     const { governorate, name, description, type, video_link, Wikipedia_link, location_link, Egy_Student_Ticket, Non_Egy_Student_Ticket, Egy_Adults_Ticket,
         Non_Egy_Adults_Ticket, Egy_Senior_Ticket, Non_Egy_Senior_Ticket, Egy_Special_Needs_Ticket, Non_Egy_Special_Needs_Ticket, Opening_Hours, place_website } = req.body;
-    console.log(req.body)
     console.log(req.files)
     if (req.files !== undefined) {
         let main_image = ""
@@ -576,31 +618,41 @@ export const Place_Add = async (req, res) => {
         let image_4 = ""
         let image_5 = ""
         let image_6 = ""
-        if (req.files.length >= 1) {
-            main_image = req.files[0].filename;
+
+
+        if (req.files.main_image !== undefined) {
+            console.log(req.files.main_image[0].filename)
+            main_image = req.files.main_image[0].filename
         }
-        if (req.files.length >= 2) {
-            image_1 = req.files[1].filename;
+        if (req.files.image_1 !== undefined) {
+            console.log(req.files.image_1[0].filename)
+            image_1 = req.files.image_1[0].filename
         }
-        if (req.files.length >= 3) {
-            image_2 = req.files[2].filename;
+        if (req.files.image_2 !== undefined) {
+            console.log(req.files.image_2[0].filename)
+            image_2 = req.files.image_2[0].filename
         }
-        if (req.files.length >= 4) {
-            image_3 = req.files[3].filename;
+        if (req.files.image_3 !== undefined) {
+            console.log(req.files.image_3[0].filename)
+            image_3 = req.files.image_3[0].filename
         }
-        if (req.files.length >= 5) {
-            image_4 = req.files[4].filename;
+        if (req.files.image_4 !== undefined) {
+            console.log(req.files.image_4[0].filename)
+            image_4 = req.files.image_4[0].filename
         }
-        if (req.files.length >= 6) {
-            image_5 = req.files[5].filename;
+        if (req.files.image_5 !== undefined) {
+            console.log(req.files.image_5[0].filename)
+            image_5 = req.files.image_5[0].filename
         }
-        if (req.files.length >= 7) {
-            image_6 = req.files[6].filename;
+        if (req.files.image_6 !== undefined) {
+            console.log(req.files.image_6[0].filename)
+            image_6 = req.files.image_6[0].filename
         }
         await Places.create({
             governorate,
             name,
             description,
+            rate:"0",
             type,
             video_link,
             Wikipedia_link,
@@ -629,7 +681,13 @@ export const Place_Add = async (req, res) => {
 export const Place_Delete = async (req, res) => {
     const { id } = req.params
     const the_Place = await Places.findOne({ _id: id }).lean();
-    deleteFile("Upload\\img\\Places\\" + the_Place.image);
+    deleteFile("Upload\\img\\Places\\" + the_Place.main_image);
+    deleteFile("Upload\\img\\Places\\" + the_Place.image_1);
+    deleteFile("Upload\\img\\Places\\" + the_Place.image_2);
+    deleteFile("Upload\\img\\Places\\" + the_Place.image_3);
+    deleteFile("Upload\\img\\Places\\" + the_Place.image_4);
+    deleteFile("Upload\\img\\Places\\" + the_Place.image_5);
+    deleteFile("Upload\\img\\Places\\" + the_Place.image_6);
     await Places.findByIdAndDelete(id);
     res.redirect('/Dashboard/Place')
 };
@@ -656,46 +714,527 @@ export const Place_Edit = async (req, res) => {
     await Places.findByIdAndUpdate(id, { $set: { place_website } })
     if (req.files !== undefined) {
         console.log(req.files)
-        if (req.files.length >= 1) {
+
+        if (req.files !== undefined) {
             const the_Place = await Places.findOne({ _id: id }).lean();
-            deleteFile("Upload\\img\\Places\\" + the_Place.main_image);
-            await Places.findByIdAndUpdate(id, { $set: { main_image : req.files[0].filename } })
+            if (req.files.main_image !== undefined) {
+                deleteFile("Upload\\img\\Places\\" + the_Place.main_image);
+                await Places.findByIdAndUpdate(id, { $set: { main_image: req.files.main_image[0].filename } })
+            }
+            if (req.files.image_1 !== undefined) {
+                deleteFile("Upload\\img\\Places\\" + the_Place.image_1);
+                await Places.findByIdAndUpdate(id, { $set: { image_1: req.files.image_1[0].filename } })
+            }
+            if (req.files.image_2 !== undefined) {
+                deleteFile("Upload\\img\\Places\\" + the_Place.image_2);
+                await Places.findByIdAndUpdate(id, { $set: { image_2: req.files.image_2[0].filename } })
+            }
+            if (req.files.image_3 !== undefined) {
+                deleteFile("Upload\\img\\Places\\" + the_Place.image_3);
+                await Places.findByIdAndUpdate(id, { $set: { image_3: req.files.image_3[0].filename } })
+            }
+            if (req.files.image_4 !== undefined) {
+                deleteFile("Upload\\img\\Places\\" + the_Place.image_4);
+                await Places.findByIdAndUpdate(id, { $set: { image_4: req.files.image_4[0].filename } })
+            }
+            if (req.files.image_5 !== undefined) {
+                deleteFile("Upload\\img\\Places\\" + the_Place.image_5);
+                await Places.findByIdAndUpdate(id, { $set: { image_5: req.files.image_5[0].filename } })
+            }
+            if (req.files.image_6 !== undefined) {
+                deleteFile("Upload\\img\\Places\\" + the_Place.image_6);
+                await Places.findByIdAndUpdate(id, { $set: { image_6: req.files.image_6[0].filename } })
+            }
         }
-        if (req.files.length >= 2) {
-            const the_Place = await Places.findOne({ _id: id }).lean();
-            deleteFile("Upload\\img\\Places\\" + the_Place.image_1);
-            await Places.findByIdAndUpdate(id, { $set: { image_1 : req.files[1].filename } })
-        }
-        if (req.files.length >= 3) {
-            image_2 = req.files[2].filename;
-            const the_Place = await Places.findOne({ _id: id }).lean();
-            deleteFile("Upload\\img\\Places\\" + the_Place.image_2);
-            await Places.findByIdAndUpdate(id, { $set: { image_2 } })
-        }
-        if (req.files.length >= 4) {
-            image_3 = req.files[3].filename;
-            const the_Place = await Places.findOne({ _id: id }).lean();
-            deleteFile("Upload\\img\\Places\\" + the_Place.image_3);
-            await Places.findByIdAndUpdate(id, { $set: { image_3 } })
-        }
-        if (req.files.length >= 5) {
-            image_4 = req.files[4].filename;
-            const the_Place = await Places.findOne({ _id: id }).lean();
-            deleteFile("Upload\\img\\Places\\" + the_Place.image_4);
-            await Places.findByIdAndUpdate(id, { $set: { image_4 } })
-        }
-        if (req.files.length >= 6) {
-            image_5 = req.files[5].filename;
-            const the_Place = await Places.findOne({ _id: id }).lean();
-            deleteFile("Upload\\img\\Places\\" + the_Place.image_5);
-            await Places.findByIdAndUpdate(id, { $set: { image_5 } })
-        }
-        if (req.files.length >= 7) {
-            image_6 = req.files[6].filename;
-            const the_Place = await Places.findOne({ _id: id }).lean();
-            deleteFile("Upload\\img\\Places\\" + the_Place.image_6);
-            await Places.findByIdAndUpdate(id, { $set: { image_6 } })
-        }
-    res.redirect('/Dashboard/Place')
+        res.redirect('/Dashboard/Place')
     }
+};
+
+// --------------------Tourguide------------------------
+export const Tourguide = async (req, res) => {
+    const tourguides = await Tourguides.find().lean();
+    const governorates = await Governorates.find().lean();
+    let array = []
+    governorates.forEach((the_governorate) => {
+        array.push(the_governorate.name)
+    });
+    tourguides.forEach((the_tourguide) => {
+        let arr = []
+        governorates.forEach((the_governorate) => {
+            if (the_governorate.Tourguides !== undefined) {
+                the_governorate.Tourguides.forEach((the_governorate_tourguide) => {
+                    let id = the_governorate_tourguide._id.toString()
+                    if (id == the_tourguide._id) {
+                        arr.push(the_governorate.name)
+                    }
+                });
+            }
+        });
+        the_tourguide.work_governorates = arr
+        the_tourguide.The_Governorates = array
+        arr = []
+    });
+
+
+    res.render('Dashboard/Tourguide', { tourguides, governorates ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
+};
+export const Tourguide_Add = async (req, res) => {
+    console.log(req.body)
+    const { name, username, password, governorate, work_gov_1, work_gov_2, work_gov_3, phone, Bio, facebook_link, instagram_link, linkedin_link, language, gender, image } = req.body;
+    if (((work_gov_1 == work_gov_2) && (work_gov_1 != "None")) || ((work_gov_2 == work_gov_3) && (work_gov_2 != "None")) || ((work_gov_1 == work_gov_3) && (work_gov_1 != "None"))) {
+        notifier.notify({
+            title: ' Warning! ',
+            message: 'you Cannot Choose the same Work Governorate More than Once ',
+            sound: true,
+            wait: true
+        })
+        res.status(204).send()
+    } else {
+        var salt = bcrypt.genSaltSync(10);
+        var encryotedPassword = bcrypt.hashSync(password, salt);
+        const check_Tourists = await Tourists.findOne({ username }).lean();    // To ensure there are no duplicate emails
+        const check_Tourguides = await Tourguides.findOne({ username }).lean(); // To ensure there are no duplicate emails
+        const check_Admins = await Admins.findOne({ username }).lean();         // To ensure there are no duplicate emails
+        if (check_Tourists === null && check_Tourguides === null && check_Admins === null) {              // To ensure there are no duplicate emails
+            let filename = "Avatar.png";
+            if (req.file !== undefined) {
+                filename = req.file.filename;
+            }
+            await Tourguides.create({
+                name, username, password, governorate, work_gov_1,
+                work_gov_2, work_gov_3, phone, Bio, facebook_link,
+                instagram_link, linkedin_link, language, gender, image: filename,
+                Tourguide_papers_new : "Created by Admin",
+                Tourguide_papers_original :"Created by Admin"
+            });
+            // To Add the languages
+            const the_added_tourguide = await Tourguides.findOne({ name, username }).lean();
+            await Tourguides.findByIdAndUpdate(the_added_tourguide._id, { $set: { languages: [language] } })
+            // To Add work_gov_1
+            const the_governorate = await Governorates.findOne({ _id: work_gov_1 }).lean();
+            let arr = the_governorate.Tourguides
+            if (arr !== undefined) {
+                arr.push(the_added_tourguide._id)
+                await Governorates.findByIdAndUpdate(work_gov_1, { $set: { Tourguides: arr } })
+            } else {
+                await Governorates.findByIdAndUpdate(work_gov_1, { $set: { Tourguides: [the_added_tourguide._id] } })
+            }
+            if (work_gov_2 != "None") {
+                // To Add work_gov_2
+                const the_governorate = await Governorates.findOne({ _id: work_gov_2 }).lean();
+                let arr = the_governorate.Tourguides
+                if (arr !== undefined) {
+                    arr.push(the_added_tourguide._id)
+                    await Governorates.findByIdAndUpdate(work_gov_2, { $set: { Tourguides: arr } })
+                } else {
+                    await Governorates.findByIdAndUpdate(work_gov_2, { $set: { Tourguides: [the_added_tourguide._id] } })
+                }
+            }
+            if (work_gov_3 != "None") {
+                // To Add work_gov_3
+                const the_governorate = await Governorates.findOne({ _id: work_gov_3 }).lean();
+                let arr = the_governorate.Tourguides
+                if (arr !== undefined) {
+                    arr.push(the_added_tourguide._id)
+                    await Governorates.findByIdAndUpdate(work_gov_3, { $set: { Tourguides: arr } })
+                } else {
+                    await Governorates.findByIdAndUpdate(work_gov_3, { $set: { Tourguides: [the_added_tourguide._id] } })
+                }
+            }
+            res.redirect('/Dashboard/Tourguide')
+
+
+        } else {
+            notifier.notify({
+                title: 'Warning!',
+                message: 'you cannot use this UserName',
+                sound: true,
+                wait: true
+            })
+            res.status(204).send()
+        }
+    }
+};
+export const Tourguide_Delete = async (req, res) => {
+    const { id } = req.params
+    const the_Tourguide = await Tourguides.findOne({ _id: id }).lean();  // get the toutist
+    const the_governorates = await Governorates.find({ Tourguides: id }).lean();
+    for (let is = 0; is < the_governorates.length; is++) {
+        let arr = the_governorates[is].Tourguides
+        let arr_After_Delete = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i]._id.toString() !== id.toString()) {
+                arr_After_Delete.push({ _id: arr[i]._id.toString() });
+            }
+        }
+        await Governorates.findByIdAndUpdate(the_governorates[is]._id, { $set: { Tourguides: arr_After_Delete } })
+    };
+    deleteFile("Upload\\img\\Tour Guides\\" + the_Tourguide.image);          // delete the tourist image from the folder
+    await Tourguides.findByIdAndDelete(id);                             // delete the tourist
+    res.redirect('/Dashboard/Tourguide')
+};
+export const Tourguide_Edit = async (req, res) => {
+    const { id, name, username, password, governorate, delete_work, add_work, phone, Bio, facebook_link, instagram_link, linkedin_link, delete_languages, Add_languages } = req.body;
+    const the_Tourguide = await Tourguides.findOne({ _id: id }).lean()
+    const lang_and_work = async () => {
+        let check = ""
+        if (add_work !== "None"){
+            const the_govern = await Governorates.findOne({ name: add_work }).lean()
+            the_govern.Tourguides.forEach((tourguide) => {
+                if (tourguide._id.toString() == id) {
+                    check = "work_notifier"
+                }
+            });
+        }
+        // delete work
+        const arr = delete_work
+        if (check == "work_notifier") {
+            notifier.notify({
+                title: 'Warning!',
+                message: ' The Tourguide Already have this Governorate',
+                sound: true,
+                wait: true
+            })
+            res.status(204).send()
+            return false;    // Stops further code execution in Tourguide_Edit
+        } else {
+            for (let i = 1; i < arr.length; i++) {
+                const the_gov = await Governorates.findOne({ name: arr[i] }).lean()
+                let array = the_gov.Tourguides
+                let arr_After_Delete = [];
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i]._id.toString() !== id.toString()) {
+                        arr_After_Delete.push({ _id: array[i]._id.toString() });
+                    }
+                }
+                await Governorates.findByIdAndUpdate(the_gov._id, { $set: { Tourguides: arr_After_Delete } })
+            }
+        }
+        // Add work
+        if (add_work !== "None") {
+            if (check == "work_notifier") {
+                notifier.notify({
+                    title: 'Warning!',
+                    message: ' The Tourguide Already have this Governorate',
+                    sound: true,
+                    wait: true
+                })
+                res.status(204).send()
+                return false;    // Stops further code execution in Tourguide_Edit
+            } else {
+                const the_gov = await Governorates.findOne({ name: add_work }).lean()
+                let addArrayWork = the_gov.Tourguides
+                addArrayWork.push(the_Tourguide._id)
+                await Governorates.findByIdAndUpdate(the_gov._id, { $set: { Tourguides: addArrayWork } })
+            }
+        }
+        check = ""
+        if (Add_languages !== "None"){
+        const the_Toyrguide = await Tourguides.findOne({ _id: id }).lean()
+        the_Toyrguide.languages.forEach((language) => {
+            if (language == Add_languages) {
+                check = "language_notifier"
+            }
+        });
+        }
+        // delete Languages 
+        if (check == "language_notifier") {
+            notifier.notify({
+                title: 'Warning!',
+                message: 'This Language is Added befor',
+                sound: true,
+                wait: true
+            })
+            res.status(204).send()
+            return false;    // Stops further code execution in Tourguide_Edit
+        } else {
+            const arr2 = delete_languages
+            for (let s = 1; s < arr2.length; s++) {
+                const the_Toyrguide = await Tourguides.findOne({ _id: id }).lean()
+                let array2 = the_Toyrguide.languages
+                let arr_After_Delete = [];
+                for (let i = 0; i < array2.length; i++) {
+                    if (array2[i] !== arr2[s]) {
+                        arr_After_Delete.push(array2[i]);
+                    }
+                }
+                await Tourguides.findByIdAndUpdate(id, { $set: { languages: arr_After_Delete } })
+                arr_After_Delete = []
+            }
+        }
+        // Add languages
+        if (Add_languages !== "None") {
+            if (check == "language_notifier") {
+                notifier.notify({
+                    title: 'Warning!',
+                    message: 'This Language is Added befor',
+                    sound: true,
+                    wait: true
+                })
+                res.status(204).send()
+                return false;    // Stops further code execution in Tourguide_Edit
+            } else {
+                const the_Toyrguide = await Tourguides.findOne({ _id: id }).lean()
+                let addArray = the_Toyrguide.languages
+                addArray.push(Add_languages)
+                await Tourguides.findByIdAndUpdate(id, { $set: { languages: addArray } })
+            }
+        }
+        
+        return true; // Indicates that everything went fine
+    }
+    const result = await lang_and_work();  // Correctly call the function
+    if (!result){
+        return; 
+    }else{
+        console.log("hereeeeeeeeeeeeeee")
+        if (the_Tourguide.username == username) {
+            await Tourguides.findByIdAndUpdate(id, { $set: { name } })
+            await Tourguides.findByIdAndUpdate(id, { $set: { username } })
+            await Tourguides.findByIdAndUpdate(id, { $set: { governorate } })
+            await Tourguides.findByIdAndUpdate(id, { $set: { phone } })
+            await Tourguides.findByIdAndUpdate(id, { $set: { Bio } })
+            await Tourguides.findByIdAndUpdate(id, { $set: { facebook_link } })
+            await Tourguides.findByIdAndUpdate(id, { $set: { instagram_link } })
+            await Tourguides.findByIdAndUpdate(id, { $set: { linkedin_link } })
+            if (password != "") {
+                var salt = bcrypt.genSaltSync(10);                                  // To Decrypt password
+                var encryotedPassword = bcrypt.hashSync(password, salt);            // To Decrypt password
+                await Tourguides.findByIdAndUpdate(id, { $set: { password: encryotedPassword } })
+            }
+            if (req.file !== undefined) {
+                const { filename } = req.file;
+                deleteFile("Upload\\img\\Tour Guides\\" + Tourguides.image);
+                await Tourguides.findByIdAndUpdate(id, { $set: { image: filename } });
+            }
+            res.redirect('/Dashboard/Tourguide')
+        }
+        else {
+            const Tourist = await Tourists.findOne({ username }).lean();
+            const Tourguide = await Tourguides.findOne({ username }).lean();
+            const Admin = await Admins.findOne({ username }).lean();
+            if (Tourist === null && Tourguide === null && Admin === null) {
+                await Tourguides.findByIdAndUpdate(id, { $set: { name } })
+                await Tourguides.findByIdAndUpdate(id, { $set: { username } })
+                await Tourguides.findByIdAndUpdate(id, { $set: { governorate } })
+                await Tourguides.findByIdAndUpdate(id, { $set: { phone } })
+                await Tourguides.findByIdAndUpdate(id, { $set: { Bio } })
+                await Tourguides.findByIdAndUpdate(id, { $set: { facebook_link } })
+                await Tourguides.findByIdAndUpdate(id, { $set: { instagram_link } })
+                await Tourguides.findByIdAndUpdate(id, { $set: { linkedin_link } })
+                if (password != "") {
+                    var salt = bcrypt.genSaltSync(10);                                  // To Decrypt password
+                    var encryotedPassword = bcrypt.hashSync(password, salt);            // To Decrypt password
+                    await Tourguides.findByIdAndUpdate(id, { $set: { password: encryotedPassword } })
+                }
+                if (req.file !== undefined) {
+                    const { filename } = req.file;
+                    deleteFile("Upload\\img\\Tour Guides\\" + Tourguides.image);
+                    await Tourguides.findByIdAndUpdate(id, { $set: { image: filename } });
+                }
+                res.redirect('/Dashboard/Tourguide')
+            } else {
+                notifier.notify({
+                    title: 'Warning!',
+                    message: 'you cannot use this UserName',
+                    sound: true,
+                    wait: true
+                })
+                res.status(204).send()
+    
+            }
+        }
+    }
+   
+
+};
+
+// --------------------Activation------------------------
+
+export const Activation = async (req, res) => {
+    const tourguides = await Tourguides.find({state:"Blocked"}).lean();
+    res.render('Dashboard/Activation',{tourguides ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
+};
+export const Activation_CV = async (req, res) => {
+    const {id} = req.params
+    const tourguides = await Tourguides.findOne({_id:id}).lean();
+    const the_cv = tourguides.Tourguide_papers_new
+    const downloadFileName = tourguides.Tourguide_papers_original
+    const filePath = "./Upload/Tourguide_Doc/"+the_cv
+    res.download(filePath, downloadFileName, (downloadErr) => {
+        if (downloadErr) {
+            res.status(500).send('Error downloading file');
+        }
+    });
+};
+export const Active = async (req, res) => {
+    console.log(req.body)
+    
+    const {id,Experience, Hourly_Rate, Total_Tours, English_Level, Languages, Availability} = req.body;
+    console.log(Languages)
+    await Tourguides.findByIdAndUpdate(id, { $set: { Experience } })
+    await Tourguides.findByIdAndUpdate(id, { $set: { Hourly_Rate } })
+    await Tourguides.findByIdAndUpdate(id, { $set: { Total_Tours } })
+    await Tourguides.findByIdAndUpdate(id, { $set: { English_Level } })
+    await Tourguides.findByIdAndUpdate(id, { $set: { Availability } })
+    if(Languages!==undefined){
+    if (Array.isArray(Languages) && Languages.length > 0) {
+        await Tourguides.findByIdAndUpdate(id, { $set: { languages: Languages } });
+    }else{
+        await Tourguides.findByIdAndUpdate(id, { $set: { languages: [Languages] } });
+    }
+}
+await Tourguides.findByIdAndUpdate(id, { $set: { state: "Active" } });
+
+    res.redirect('/Dashboard/Activation')
+};
+// --------------------Bills------------------------
+export const Bill = async (req, res) => {
+    const bills = await Bills.find().populate('user_id').lean();
+    res.render('Dashboard/Bills', { bills ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
+};
+export const Bills_Delete = async (req, res) => {
+    const { id } = req.params
+    await Bills.findByIdAndDelete(id);                             // delete the tourist
+    res.redirect('/Dashboard/Bill')
+};
+export const Bill_Show = async (req, res) => {
+    const {id} = req.params;
+   const bill = await Bills.findOne({_id :id}).populate("user_id").lean();
+   const amount = bill.amount_cents/100;
+    res.render('Bill/bill' , {bill ,amount,check :"Admin"})
+};
+
+// --------------------Contact------------------------
+export const Contact = async (req, res) => {
+    const contact = await Contacts.find({reply:"None"}).lean();
+    for(let i = 0 ; i <contact.length ; i++){
+        const tourist = await Tourists.findOne({_id :contact[i].user_id }).lean();
+        const tourguide = await Tourguides.findOne({_id :contact[i].user_id }).lean();
+        if(contact[i].type == "Tourist" && tourist !== null){
+            contact[i].name = tourist.name
+            contact[i].username = tourist.username
+            contact[i].image = tourist.image
+        }
+        if(contact[i].type == "Tourguide" && tourguide !== null){
+            contact[i].name = tourguide.name
+            contact[i].username = tourguide.username
+            contact[i].image = tourguide.image
+        }
+    }
+  
+    res.render('Dashboard/Contact', { contact ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
+};
+export const Send = async (req, res) => {
+    const { id ,message } = req.body
+    await Contacts.findByIdAndUpdate(id, { $set: { reply: message } })
+    res.redirect('/Dashboard/Contact')
+};
+export const Done = async (req, res) => {
+    const { id } = req.params
+    await Contacts.findByIdAndUpdate(id, { $set: { reply: "Done" } })
+    res.redirect('/Dashboard/Contact')
+};
+
+// --------------------Music------------------------
+export const Music = async (req, res) => {
+    const musics = await Musics.find().lean();
+    res.render('Dashboard/Music', { musics ,contact_Messages,contact_Messages_Number,Activation_number,Bills_number,tourguides_contact_number})
+};
+export const Music_Add = async (req, res) => {
+    const { name, description,Facebook_link,Instagram_link,twitter_link,Google_link,
+        Wikipedia_link,song_1_Name,song_1_Released,song_1_Album,song_1_Album_link,song_2_Name,
+        song_2_Released,song_2_Album,song_2_Album_link} = req.body;
+        const check = await Musics.findOne({name}).lean()
+        if(check==undefined){
+            await Musics.create({
+                name, description,Facebook_link,Instagram_link,twitter_link,Google_link,
+                Wikipedia_link,song_1_Name,song_1_Released,song_1_Album,song_1_Album_link,song_2_Name,
+                song_2_Released,song_2_Album,song_2_Album_link,
+                image : req.files.image[0].filename,
+                song_1_Image : req.files.song_1_Image[0].filename,
+                song_1 : req.files.song_1[0].filename,
+                song_2_Image : req.files.song_2_Image[0].filename,
+                song_2 : req.files.song_2[0].filename
+            });
+            const musics = await Musics.findOne({name}).lean();
+            if(Facebook_link==""){await Musics.findByIdAndUpdate(musics._id, { $set: { Facebook_link: "None" } });}
+            if(Instagram_link==""){await Musics.findByIdAndUpdate(musics._id, { $set: { Instagram_link: "None" } });}
+            if(twitter_link==""){await Musics.findByIdAndUpdate(musics._id, { $set: { twitter_link: "None" } });}
+            if(song_2_Album_link==""){await Musics.findByIdAndUpdate(musics._id, { $set: { song_2_Album_link: "None" } });}
+            if(song_1_Album_link==""){await Musics.findByIdAndUpdate(musics._id, { $set: { song_1_Album_link: "None" } });}
+            res.redirect('/Dashboard/Music')
+        }else{
+            notifier.notify({
+                title: 'Warning!',
+                message: 'We already have this singer',
+                sound: true,
+                wait: true
+            })
+            res.status(204).send()
+        }
+        
+
+}
+export const Music_Delete = async (req, res) => {
+    const { id } = req.params
+    const the_Music = await Musics.findOne({ _id: id }).lean();
+    deleteFile("Upload\\img\\Music\\" + the_Music.image);
+    deleteFile("Upload\\img\\Music\\" + the_Music.song_1_Image);
+    deleteFile("Upload\\img\\Music\\" + the_Music.song_1);
+    deleteFile("Upload\\img\\Music\\" + the_Music.song_2_Image);
+    deleteFile("Upload\\img\\Music\\" + the_Music.song_2);
+    await Musics.findByIdAndDelete(id);
+    res.redirect('/Dashboard/Music')
+};
+export const Music_Edit = async (req, res) => {
+    const { id,name, description,Facebook_link,Instagram_link,twitter_link,Google_link,
+        Wikipedia_link,song_1_Name,song_1_Released,song_1_Album,song_1_Album_link,song_2_Name,
+        song_2_Released,song_2_Album,song_2_Album_link} = req.body;
+        await Musics.findByIdAndUpdate(id, { $set: { name } })
+        await Musics.findByIdAndUpdate(id, { $set: { description } })
+        await Musics.findByIdAndUpdate(id, { $set: { Facebook_link } })
+        await Musics.findByIdAndUpdate(id, { $set: { Instagram_link } })
+        await Musics.findByIdAndUpdate(id, { $set: { twitter_link } })
+        await Musics.findByIdAndUpdate(id, { $set: { Google_link } })
+        await Musics.findByIdAndUpdate(id, { $set: { Wikipedia_link } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_1_Name } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_1_Released } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_1_Album } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_1_Album_link } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_2_Name } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_2_Released } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_2_Album } })
+        await Musics.findByIdAndUpdate(id, { $set: { song_2_Album_link } })
+        if (req.files.image !== undefined) {
+            const filename  = req.files.image[0].filename;
+            const the_Music = await Musics.findOne({ _id: id }).lean();
+            deleteFile("Upload\\img\\Music\\" + the_Music.image);
+            await Musics.findByIdAndUpdate(id, { $set: { image: filename } });
+        };
+        if (req.files.song_1_Image !== undefined) {
+            const filename  = req.files.song_1_Image[0].filename;
+            const the_Music = await Musics.findOne({ _id: id }).lean();
+            deleteFile("Upload\\img\\Music\\" + the_Music.song_1_Image);
+            await Musics.findByIdAndUpdate(id, { $set: { song_1_Image: filename } });
+        };
+        if (req.files.song_1 !== undefined) {
+            const filename  = req.files.song_1[0].filename;
+            const the_Music = await Musics.findOne({ _id: id }).lean();
+            deleteFile("Upload\\img\\Music\\" + the_Music.song_1);
+            await Musics.findByIdAndUpdate(id, { $set: { song_1: filename } });
+        };
+        if (req.files.song_2_Image !== undefined) {
+            const filename  = req.files.song_2_Image[0].filename;
+            const the_Music = await Musics.findOne({ _id: id }).lean();
+            deleteFile("Upload\\img\\Music\\" + the_Music.song_2_Image);
+            await Musics.findByIdAndUpdate(id, { $set: { song_2_Image: filename } });
+        };
+        if (req.files.song_2 !== undefined) {
+            const filename  = req.files.song_2[0].filename;
+            const the_Music = await Musics.findOne({ _id: id }).lean();
+            deleteFile("Upload\\img\\Music\\" + the_Music.song_2);
+            await Musics.findByIdAndUpdate(id, { $set: { song_2: filename } });
+        };
+    res.redirect('/Dashboard/Music')
 };

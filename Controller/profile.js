@@ -212,5 +212,5 @@ export const  Reservations = async (req, res) => {
    const {_id} = req.params;
    const bill = await bills.findOne({_id}).populate("user_id").lean();
    const amount = bill.amount_cents/100;
-   res.render('Bill/bill' , {bill ,amount})
+   res.render('Bill/bill' , {bill ,amount,check :"User"})
 };

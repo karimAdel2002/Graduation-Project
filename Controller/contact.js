@@ -1,4 +1,5 @@
 import contact from "../DB Models/Contact.js"
+import notifier from 'node-notifier'
 
 
 export const index = async (req, res) => { 
@@ -7,11 +8,18 @@ export const index = async (req, res) => {
 
 export const send = async (req, res) => { 
     const { message, subject  } = req.body
+    const type = req.cookies.UserType;
     await contact.create({
-        tourist_id: req.id ,
+        user_id: req.id ,
+        type,
         subject:subject ,
         message:message ,
     }); 
-
-    res.send('done')
+    notifier.notify({
+        title: 'Alert!',
+        message: 'Message Send',
+        sound: true,
+        wait: true
+    })
+    res.render("Contact/index");
 };

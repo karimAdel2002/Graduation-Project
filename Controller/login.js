@@ -3,6 +3,7 @@ import Tourguide_Acc from "../DB Models/Tourguide_Acc.js"
 import Admin_Acc from "../DB Models/Admin_Acc.js"
 import bcrypt from 'bcryptjs'
 import jwt from "jsonwebtoken"
+import notifier from 'node-notifier'
 
 
 export const index = async (req, res) => {
@@ -36,7 +37,14 @@ export const check = async (req, res) => {
             res.cookie('token', jwtToken)
             res.cookie('UserType', "Tourguide")
             res.redirect("/Home")
-        } else { res.send("Administrators have not yet activated your account ") }
+        } else { 
+            notifier.notify({
+                title: 'Successful',
+                message: ' Administrators have not yet activated your account',
+                sound: true,
+                wait: true
+            })
+            }
     }
     if (Tourists !== null) {
         const isCorrectPassword = bcrypt.compareSync(password, Tourists.password);     //To Compare between the decrypted password in DB and entered password
@@ -75,6 +83,13 @@ export const register = async (req, res) => {
                 Tourguide_papers_new: req.file.filename,
                 Tourguide_papers_original: req.file.originalname,
             });
+            notifier.notify({
+                title: 'Successful',
+                message: ' Your email has been added successfully',
+                sound: true,
+                wait: true
+            })
+            
             res.redirect("/sign_in")
         }
         else { res.send("you can't sign this email") }
@@ -102,9 +117,11 @@ export const register = async (req, res) => {
 };
 export const log_out = async (req, res) => {
     res.clearCookie("token");
+    res.clearCookie("UserType");
     res.redirect('/sign_in')
 };
 export const google = async (req, res) => {
+    console.log(req.user)
     const user = req.user;
     const username = user.email
     const password = user.id
@@ -119,6 +136,7 @@ export const google = async (req, res) => {
         const id = Tourists._id
         const jwtToken = jwt.sign(id.toJSON(), process.env.JWT_SECRET);
         res.cookie('token', jwtToken)
+        res.cookie('UserType', "Tourist")
         res.redirect("/Home")
 
     }
@@ -133,15 +151,24 @@ export const google = async (req, res) => {
                 name,
                 username,
                 password: encryotedPassword,
+                country : 'Eygpt',
+                gender : "Undefined"
             });
             const new_Tourists = await Tourists_Acc.findOne({ username }).lean();    // To get the id 
             const id = new_Tourists._id
             const jwtToken = jwt.sign(id.toJSON(), process.env.JWT_SECRET);
             res.cookie('token', jwtToken)
-
+            res.cookie('UserType', "Tourist")
             res.redirect("/Home")
         }
-        else { res.send("you can't sign this email") }
+        else { 
+            notifier.notify({
+                title: 'Failed to sign up !',
+                message: 'We already have this username ',
+                sound: true,
+                wait: true
+            })
+        }
     }
 
 };
