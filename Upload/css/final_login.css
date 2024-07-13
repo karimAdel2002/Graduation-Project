@@ -261,9 +261,9 @@ select{
 	border-radius:25px;
   border: 2px solid white;
 	background:rgba(255,255,255,.1);
-  height: 47px;
+  height: 54px;
   width: 362px;
-  font-size: 12px;
+  font-size: 15px;
   color: #333;
 }
 select:hover{
@@ -367,10 +367,14 @@ select:hover{
 	margin-bottom:15px;
 }
 .login-space .group .label,
-.login-space .group .input,
 .login-space .group .button{
 	width:100%;
 	color:#fff;
+	display:block;
+}
+.login-space .group .input{
+  width:100%;
+	color:#000000;
 	display:block;
 }
 .login-space .group .input,
