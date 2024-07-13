@@ -21,8 +21,9 @@ import embassies_route from './Routes/embassies_route.js'
 import profile_route from './Routes/profile_route.js'
 import done_route from './Routes/done_route.js'
 import Dashboard_route from './Routes/Dashboard_route.js'
-
-
+import Currency_Converter_route from './Routes/Currency_Converter_route.js'
+import Translation_route from './Routes/Translation_route.js'
+import Landmarks_route from './Routes/Landmarks_route.js'
 import passport from 'passport';
 import './API files/passport.js';
 import { NgrokClient } from 'ngrok';
@@ -32,35 +33,17 @@ import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import { authentication } from './middleware/authentication.js';
 mongoose.connect(process.env.mongooconectionurl);
-// mongoose.connect(process.env.mongooconectionurl, {
-//   userNewUrlPaser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-// })
-//   .then(() => {
-//     console.log('Connected to MongoDB');
-//   })
-//   .catch((e) => {
-//     console.log('not connected');
-//   });
-
 const app = express();
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(cookieParser())
-
-
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'))
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './Templates');
-
 app.use(express.static("Templates"));
 app.use(express.static("Upload"));
-
 app.use('/sign_in',login_route);
 app.use('/Home',authentication,home_route);
 app.use('/Governorates',authentication,governorate_route);
@@ -77,19 +60,17 @@ app.use('/Tourguides',authentication,tourguides_route);
 app.use('/Music',authentication,music_route);
 app.use('/Astro_Tourism',authentication,astro_tourism_route);
 app.use('/Embassies',authentication,embassies_route);
+app.use('/Currency_Converter',authentication,Currency_Converter_route);
+app.use('/Translation',authentication,Translation_route);
 app.use('/Profile',authentication,profile_route);
 app.use('/Dashboard',authentication,Dashboard_route);
 app.use('/Done',done_route);
-
-
-
-
-
+app.use('/Landmarks',authentication,Landmarks_route);
 app.listen(process.env.port, () => {
     console.log('started the application on http://localhost:' + process.env.port);
-    // ngrok.connect(process.env.port).then(ngrokUrl=>{
-    //     console.log("ngrok tunnel is : " ,ngrokUrl)
-    // }).catch(error=>{
-    //     console.log("ngrok error is :",error)
-    // })
+    ngrok.connect(process.env.port).then(ngrokUrl=>{
+        console.log("ngrok tunnel is : " ,ngrokUrl)
+    }).catch(error=>{
+        console.log("ngrok error is :",error)
+    })
 })
