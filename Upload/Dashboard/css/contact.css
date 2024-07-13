@@ -1,0 +1,117 @@
+.flip-card {
+  background-color: transparent;
+  width: 245px;
+  height: 350px;
+  perspective: 1000px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border-radius: 2em;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: white;
+  border: 4px solid #51A3EB;
+}
+
+.profile-image {
+  background-color: transparent;
+  border: none;
+  margin-top: 15px;
+  border-radius: 5em;
+  width: 120px;
+  height: 120px;
+  margin-left: 50px;
+}
+
+.pfp {
+  border-radius: 35em;
+  fill: #c143da;
+}
+
+.name {
+  margin-top: 15px;
+  font-size: 27px;
+  color: #51A3EB;
+  font-weight: bold;
+}
+
+
+.flip-card-back {
+  background-color: white;
+  border: 4px solid #51A3EB;
+  transform: rotateY(180deg);
+  padding: 11px;
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: white
+}
+
+.socialbar {
+  background-color: transparent;
+  border-radius: 3em;
+  width: 90%;
+  padding: 14px;
+  margin-top: 11px;
+  margin-left: 10px;
+  word-spacing: 24px;
+  color: white;
+}
+
+.socialbar svg {
+  transition: 0.4s;
+  width: 20px;
+  height: 20px;
+  color: #c143da
+}
+
+.socialbar svg:hover {
+  color: white;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+img {
+  border-radius: 50%;
+}
+
+#reply{
+  border-radius: 6px;
+  height: 30px;
+}
+.send{
+  border-radius: 6px;
+  border-color: #51A3EB;
+
+}
+
+
+div.ex3 {
+  background-color: transparent;
+  width: 210px;
+  height: 210px;
+  overflow: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
