@@ -27,11 +27,11 @@ phone : {
 },
 Tourguide_papers_new: {
     type: String,
-    required: true,
+    required: false,
 },
 Tourguide_papers_original: {
     type: String,
-    required: true,
+    required: false,
 },
 state : {
     type : String,
@@ -71,6 +71,31 @@ image : {
     type : String,
     required: false,
     default: "Avatar.png",
+},
+Experience : {
+    type : String,
+    required: false,
+    default: "",
+},
+Hourly_Rate : {
+    type : String,
+    required: false,
+    default: "",
+},
+Total_Tours : {
+    type : String,
+    required: false,
+    default: "",
+},
+English_Level : {
+    type : String,
+    required: false,
+    default: "",
+},
+Availability : {
+    type : String,
+    required: false,
+    default: "",
 },
 }, { timestamps:true});
 export default model('Tourguide_Acc',tourguidesAccounts);

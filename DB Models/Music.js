@@ -15,17 +15,17 @@ image : {
 },
 Facebook_link : {
     type : String,
-    required: true,
+    required: false,
     default:"None",
 },
 Instagram_link : {
     type : String,
-    required: true,
+    required: false,
     default:"None",
 },
 twitter_link : {
     type : String,
-    required: true,
+    required: false,
     default:"None",
 },
 Google_link : {
@@ -50,7 +50,7 @@ song_1_Album : {
 },
 song_1_Album_link : {
     type : String,
-    required: true,
+    required: false,
     default:"None",
 },
 song_1_Image : {
@@ -75,7 +75,7 @@ song_2_Album : {
 },
 song_2_Album_link : {
     type : String,
-    required: true,
+    required: false,
     default:"None",
 },
 song_2_Image : {
